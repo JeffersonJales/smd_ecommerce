@@ -7,7 +7,10 @@ package categoria.modelo;
 import java.sql.SQLException;
 import java.util.List;
 import DatabaseConnection.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -30,18 +33,26 @@ public class CategoriaDAO {
     public List<Categoria> obterTodos() throws SQLException{
         List<Categoria> resultado = new ArrayList();
         
-        System.out.println("TENTANDO CONECTAR");
-        DatabaseConnection db = new DatabaseConnection();
-        ResultSet queryResult = db.QuerySimple("Select * from categoria");
-        System.out.println("Resultado da query");
-        
-        while(queryResult.next()){
-            Categoria categoria = new Categoria();
-            categoria.setId(queryResult.getInt("id"));
-            categoria.setDescricao(queryResult.getString("descricao"));
-            resultado.add(categoria);
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Statement statement = connection.createStatement(); 
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM CATEGORIA")){
+                while(resultSet.next()){
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultSet.getInt("id"));
+                    categoria.setDescricao(resultSet.getString("descricao"));
+                    System.out.println(categoria.getDescricao());
+
+                    resultado.add(categoria);
+                }
+                
+                return resultado;
+            }
         }
-        
-        return resultado;
+        catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
     }
 }
