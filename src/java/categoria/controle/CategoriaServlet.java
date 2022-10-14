@@ -32,7 +32,6 @@ public class CategoriaServlet extends HttpServlet {
         
         try{
             categorias = categoriaDao.obterTodos();
-            
         }
         catch (SQLException ex) {
             

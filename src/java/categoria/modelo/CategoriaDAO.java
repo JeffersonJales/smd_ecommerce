@@ -29,7 +29,6 @@ public class CategoriaDAO {
         return categoria;
     }
     
-    
     public List<Categoria> obterTodos() throws SQLException{
         List<Categoria> resultado = new ArrayList();
         
