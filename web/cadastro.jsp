@@ -38,25 +38,14 @@
     <div class = "filete"></div>
 
     <main>
-<<<<<<< HEAD
         <form method="POST" action="cadastrar" onsubmit="return validateForm()">
-=======
-        <form method="POST" action="/action_page.php" onsubmit="return validateForm()">
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
-
             <div class="container">
               <h1>Cadastro</h1>
               <p>Please fill in this form to create an account.</p>
               <hr>
               
               <label for="name"><b>Name</b></label>
-<<<<<<< HEAD
               <input type="text" placeholder="Enter name" name="nome" id="name" required>
-              
-=======
-              <input type="text" placeholder="Enter name" name="name" id="name" required>
-
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
               <label for="login"><b>Login</b></label>
               <input type="text" placeholder="Enter login" name="login" id="login" required>
 
@@ -64,17 +53,10 @@
               <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
               <label for="enderco"><b>Endereço</b></label>
-<<<<<<< HEAD
               <input type="text" placeholder="Endereco" name="endereco" id="endereco" required>
           
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="senha" id="psw" required>
-=======
-              <input type="text" placeholder="Endereco" name="enderco" id="endereco" required>
-          
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
           
               <label for="psw-repeat"><b>Repeat Password</b></label>
               <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
@@ -85,11 +67,7 @@
             </div>
             
             <div class="container signin">
-<<<<<<< HEAD
                 <p>Already have an account? <a href="login.jsp">Sign in</a>.</p>
-=======
-              <p>Already have an account? <a href="login.html">Sign in</a>.</p>
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
             </div>
           </form>
     </main>
