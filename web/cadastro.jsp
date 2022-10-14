@@ -11,25 +11,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-    <head>
-=======
 <html lang="pt-br">
 <head>
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
-<<<<<<< HEAD
     <link rel="stylesheet" href="Style/cadastro.css">
     <script type="text/javascript" src="Javascript/script.js"></script>
-=======
-    <link rel="stylesheet" href="cadastro_style.css">
-    <script type="text/javascript" src="../script.js"></script>
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
 </head>
 <body>
 

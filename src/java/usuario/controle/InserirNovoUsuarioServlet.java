@@ -49,11 +49,9 @@ public class InserirNovoUsuarioServlet extends HttpServlet {
             mensagem = "Não foi possível inserir o cliente";
         }
         
-        /*
-            request.setAttribute("mensagem", mensagem);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastrar.jsp");
-            dispatcher.forward(request, response);
-        */
+        request.setAttribute("mensagem", mensagem);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+        dispatcher.forward(request, response);
         
     }
 
