@@ -29,6 +29,7 @@ public class CategoriaServlet extends HttpServlet {
         
         CategoriaDAO categoriaDao = new CategoriaDAO();
         List<Categoria> categorias = new ArrayList();
+        System.out.println("OBTER CATEGORIAS pivete");
         
         try{
             categorias = categoriaDao.obterTodos();

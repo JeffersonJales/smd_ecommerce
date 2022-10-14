@@ -18,19 +18,12 @@ import java.util.List;
  */
 public class DatabaseConnection {
     public ResultSet QuerySimple(String query) throws SQLException{
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-
-             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jj3294"); 
-                Statement statement = connection.createStatement(); 
-                ResultSet resultSet = statement.executeQuery(query)){
-                    return resultSet;
-                }
-        }
-        catch (ClassNotFoundException ex) {
-            throw new SQLException(ex.getMessage());
-        }
+        try (
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jj3294"); 
+            Statement statement = connection.createStatement(); 
+            ResultSet resultSet = statement.executeQuery(query)){
+                return resultSet;
+            }
     }
     
     public ResultSet QueryPrepare(String query, List<Object> preparedItens) throws SQLException{

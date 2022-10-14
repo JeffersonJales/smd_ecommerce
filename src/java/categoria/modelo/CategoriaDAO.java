@@ -29,8 +29,11 @@ public class CategoriaDAO {
     
     public List<Categoria> obterTodos() throws SQLException{
         List<Categoria> resultado = new ArrayList();
+        
+        System.out.println("TENTANDO CONECTAR");
         DatabaseConnection db = new DatabaseConnection();
         ResultSet queryResult = db.QuerySimple("Select * from categoria");
+        System.out.println("Resultado da query");
         
         while(queryResult.next()){
             Categoria categoria = new Categoria();
