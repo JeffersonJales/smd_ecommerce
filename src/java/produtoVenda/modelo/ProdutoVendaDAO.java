@@ -4,21 +4,76 @@
  */
 package produtoVenda.modelo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author cindydamasceno
  */
 public class ProdutoVendaDAO {
-    public ProdutoVenda obter(int idProduto, int idVenda){
+    public ProdutoVenda obter(int idProduto, int idVenda) throws SQLException{
+        ProdutoVenda produtoVenda = null;
         
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement("Select * from produto_venda where id_produto = ? AND id_venda = ?")) {
+                preparedStatement.setInt(1, idProduto);
+                preparedStatement.setInt(2, idVenda);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    produtoVenda = new ProdutoVenda();
+                    produtoVenda.setIdProduto(resultSet.getInt("id_produto"));
+                    produtoVenda.setIdVenda(resultSet.getInt("id_venda"));
+                    produtoVenda.setQuantidade(resultSet.getInt("quantidade"));
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return produtoVenda;
     }
     
-    public ProdutoVenda inserir(int idProduto, int idvenda, int quantidade){
-    
+    public boolean inserir(int idProduto, int idVenda, int quantidade) throws SQLException{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO produto_venda (id_produto, id_venda, quantidade) VALUES (?, ?, ?)")) {
+                preparedStatement.setInt(1, idProduto);
+                preparedStatement.setInt(2, idVenda);
+                preparedStatement.setInt(3, quantidade);
+
+                return preparedStatement.execute();
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
     }
     
-    public ProdutoVenda atualizar(int idProduto, int idVenda, int quantidade){
-        
+    public boolean atualizar(int idProduto, int idVenda, int quantidade) throws SQLException{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE produto_venda SET quantidade = ? WHERE id_produto = ? AND id_venda = ?")) {
+                preparedStatement.setInt(1, quantidade);
+                preparedStatement.setInt(2, idProduto);
+                preparedStatement.setInt(3, idVenda);
+
+                return preparedStatement.execute();
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
     }
 }
 

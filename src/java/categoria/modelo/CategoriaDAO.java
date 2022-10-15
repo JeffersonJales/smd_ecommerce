@@ -19,6 +19,7 @@ import java.util.ArrayList;
  */
 public class CategoriaDAO {
     public Categoria obter(int id) throws SQLException {
+        
     }
     
     public List<Categoria> obterTodos() throws SQLException{
