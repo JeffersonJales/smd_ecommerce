@@ -6,7 +6,6 @@ package categoria.modelo;
  
 import java.sql.SQLException;
 import java.util.List;
-import DatabaseConnection.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -47,7 +46,10 @@ public class CategoriaDAO {
             throw new SQLException(ex.getMessage());
         }
     }
-
+    
+    public List<Categoria> obterTodos(int idProduto) throws SQLException{
+    
+    }
     public Categoria inserir(String descricao) throws SQLException{
         
     }
