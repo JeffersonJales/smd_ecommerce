@@ -19,14 +19,6 @@ import java.util.ArrayList;
  */
 public class CategoriaDAO {
     public Categoria obter(int id) throws SQLException {
-        Categoria categoria = new Categoria();
-        
-        DatabaseConnection db = new DatabaseConnection();
-        List<Object> itens = new ArrayList();
-        itens.add(id);
-        
-        System.out.println(categoria);
-        return categoria;
     }
     
     public List<Categoria> obterTodos() throws SQLException{
@@ -55,7 +47,9 @@ public class CategoriaDAO {
         }
     }
 
-    public Categoria inserir(String descricao){}
-    public Categoria atualizar(int id, String descricao){}
-    public Categoria remover(int id){}
+    public Categoria inserir(String descricao) throws SQLException{
+        
+    }
+    public Categoria atualizar(int id, String descricao) throws SQLException{}
+    public String remover(int id) throws SQLException{}
 }
