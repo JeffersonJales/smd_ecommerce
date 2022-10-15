@@ -52,8 +52,8 @@ public class ProdutoDAO {
         String sql = 
             "Select * from produto "
             + "INNER JOIN produto_categoria ON "
-                + "produto.id = produto_categoria.id_produto AND "
-                + "produto_categoria.id_categoria = ?";
+                + "produto.id = produto_categoria.id_produto "
+                + "WHERE produto_categoria.id_categoria = ?";
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
