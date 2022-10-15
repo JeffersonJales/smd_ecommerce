@@ -2,7 +2,7 @@
 function validateForm(){
 
     var nome = document.getElementById("name");
-    var nome = document.getElementById("login");
+    var login = document.getElementById("login");
     var email = document.getElementById("email");
     var endereco = document.getElementById("endereco");
     var senha = document.getElementById("psw");
@@ -25,7 +25,6 @@ function validateForm(){
     var hasSpecial = false;
     var hasMinLen = false;
 
-    alert(senha.value)
     if (senha.value.length >3){
         hasMinLen = true;
     }else{
@@ -48,8 +47,6 @@ function validateForm(){
     }
 
     if (hasLowerCase && hasUpperCase && hasSpecial && hasMinLen){
-        alert('Senha forte')
-        alert('Senha Aprovada!!!!')
         return true
     }else{
         alert('Senha fraca')

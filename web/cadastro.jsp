@@ -1,12 +1,7 @@
 <%-- 
     Document   : cadastro
-<<<<<<< HEAD
-    Created on : 14/10/2022, 17:35:10
-    Author     : Usuário
-=======
     Created on : 14/10/2022, 17:42:23
     Author     : samue
->>>>>>> 22e69b9c4c759af4eedbe1a0120b6b054463b1fd
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

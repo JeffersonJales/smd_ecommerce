@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import usuario.modelo.UsuarioDAO;
 
@@ -40,19 +39,26 @@ public class InserirNovoUsuarioServlet extends HttpServlet {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
         String mensagem = null;
+        String destinoJSP = "login.jsp";
         
         try {
             usuarioDAO.inserir(nome, endereco, email, login, senha);
             mensagem = "Cliente inserido com sucesso";
         } catch (SQLException ex) {
             mensagem = "Não foi possível inserir o cliente";
+            destinoJSP = "cadastro.jsp";
         }
         
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+        request.setAttribute("nome", nome);
+        request.setAttribute("endereco", endereco);
+        request.setAttribute("email", email);
+        request.setAttribute("login", login);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(destinoJSP);
         dispatcher.forward(request, response);
-        
     }
 
 }

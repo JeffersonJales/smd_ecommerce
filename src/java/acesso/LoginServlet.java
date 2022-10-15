@@ -9,8 +9,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import usuario.modelo.Usuario;
+import usuario.modelo.UsuarioDAO;
 
 /**
  *
@@ -27,19 +31,38 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        // TODO
-        // Verificar se existe usuario com esse login
-        // Verificar se senha esta correta
-        // Se tiver tudo ok, volta pra index.jsp com sessão login
-      
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
-        
-        // Se tiver errado, responde que tem algo errado
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        System.out.println(login);
+        System.out.println(senha);
+
+        boolean sucesso = false;
+        try {
+            Usuario usuario = usuarioDAO.obter(login);
+            System.out.println(usuario.getSenha());
+            if (usuario.getSenha().equals(senha)) {
+                HttpSession sessao = request.getSession(true);
+                sessao.setAttribute("cliente", usuario);
+                sucesso = true;
+            }
+        } catch (SQLException ex) {
+            
+        }
+        if (!sucesso) {
+            request.setAttribute("erro_login", "Login ou senha incorreta");
+            request.setAttribute("login", login);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
         
     }
 

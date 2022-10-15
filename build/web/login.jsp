@@ -28,11 +28,22 @@
                 </div>
             
                 <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                
+                     <% if(request.getAttribute("erro_login") != null) { %>
+                    <div>
+                        <p> <%= request.getAttribute("erro_login") %> </p>
+                    </div>
+                    <% } %>
+                    
+                    <label for="uname"><b>Login</b></label>
+                    
+                    <% if(request.getAttribute("login") != null){ %>
+                        <input type="text" placeholder="Enter Username" name="login" value="<%=request.getAttribute("login") %>" required>
+                    <% } else { %>
+                        <input type="text" placeholder="Enter Username" name="login" required>
+                    <% } %>
+                    
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="senha" required>
                         
                     <button type="submit">Login</button>
                     <label>

@@ -25,7 +25,7 @@ public class UsuarioDAO {
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 
-                PreparedStatement preparedStatement = connection.prepareStatement("Select * usuario where id = ?")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("Select * from usuario where id = ?")) {
                 preparedStatement.setInt(1, id);
                 
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -57,7 +57,7 @@ public class UsuarioDAO {
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 
-                PreparedStatement preparedStatement = connection.prepareStatement("Select * usuario where login = ?")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("Select * from usuario where login = ?")) {
                 preparedStatement.setString(1, login);
                 
                 ResultSet resultSet = preparedStatement.executeQuery();
