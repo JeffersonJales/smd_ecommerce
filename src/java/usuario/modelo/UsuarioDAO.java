@@ -36,5 +36,8 @@ public class UsuarioDAO {
             throw new SQLException("Registro não foi inserido com sucesso");
         }
     }
-    
+    public Usuario obter(int id){}
+    public Usuario obter(String login){}
+    public Usuario atualizar(int id, String nome, String endereco, String email, String login, String senha){}
+    public String remover(int id){}
 }

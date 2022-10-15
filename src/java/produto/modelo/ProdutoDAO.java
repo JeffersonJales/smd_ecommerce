@@ -9,5 +9,10 @@ package produto.modelo;
  * @author cindydamasceno
  */
 public class ProdutoDAO {
+    public Produto obter(int id){}
+    public Produto obterTodos(){}
     
+    public Produto inserir(String descricao, double preco, int quantidade, String foto){}
+    public Produto atualizar(int id, String descricao, double preco, int quantidade, String foto){}
+    public Produto remover(int id){}
 }

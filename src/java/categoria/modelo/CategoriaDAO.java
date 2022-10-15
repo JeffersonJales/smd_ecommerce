@@ -54,4 +54,8 @@ public class CategoriaDAO {
             throw new SQLException(ex.getMessage());
         }
     }
+
+    public Categoria inserir(String descricao){}
+    public Categoria atualizar(int id, String descricao){}
+    public Categoria remover(int id){}
 }

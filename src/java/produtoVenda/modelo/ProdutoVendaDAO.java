@@ -9,5 +9,16 @@ package produtoVenda.modelo;
  * @author cindydamasceno
  */
 public class ProdutoVendaDAO {
+    public ProdutoVenda obter(int idProduto, int idVenda){
+        
+    }
     
+    public ProdutoVenda inserir(int idProduto, int idvenda, int quantidade){
+    
+    }
+    
+    public ProdutoVenda atualizar(int idProduto, int idVenda, int quantidade){
+        
+    }
 }
+
