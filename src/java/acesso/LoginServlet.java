@@ -42,11 +42,11 @@ public class LoginServlet extends HttpServlet {
         boolean sucesso = false;
         try {
             Usuario usuario = usuarioDAO.obter(login);
-            if (usuario.getSenha().equals(senha)) {
+            if (usuario != null && usuario.getSenha().equals(senha)) {
                 HttpSession sessao = request.getSession(true);
                 sessao.setAttribute("cliente", usuario);
                 request.setAttribute("usuario", usuario);
-
+                System.out.println("login session");
                 sucesso = true;
             }
         } catch (SQLException ex) {

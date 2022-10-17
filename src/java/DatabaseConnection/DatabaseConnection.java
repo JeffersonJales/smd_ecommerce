@@ -17,6 +17,7 @@ import java.util.List;
  * @author cindydamasceno
  */
 public class DatabaseConnection {
+
     public ResultSet QuerySimple(String query) throws SQLException{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

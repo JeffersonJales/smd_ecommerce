@@ -37,10 +37,11 @@
                         
                     <% 
                         Usuario cliente = null;
-                        cliente = (Usuario) request.getAttribute("usuario");
+                        
+                        if(session != null)
+                            cliente = (Usuario) session.getAttribute("cliente");
                         
                         if(cliente != null){
-                            //cliente = (Usuario) session.getAttribute("cliente");
                     %>
                             
                             <span> 
