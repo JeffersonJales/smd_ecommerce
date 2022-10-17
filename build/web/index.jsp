@@ -37,12 +37,19 @@
                         
                     <% 
                         Usuario cliente = null;
-                        if(request.getSession(false) == null){
-                            cliente = (Usuario) session.getAttribute("cliente");
+                        cliente = (Usuario) request.getAttribute("usuario");
+                        
+                        if(cliente != null){
+                            //cliente = (Usuario) session.getAttribute("cliente");
                     %>
                             
                             <span> 
-                                Olá 
+                                Olá <%= cliente.getNome() %>
+                                
+                                <% if(cliente.isAdministrador()) { %>
+                                ADM
+                                <% } %>
+                                
                                 <br> <form action="logout", method="POST">
                                     <button type="submit">Logout</button>
                                 </form>

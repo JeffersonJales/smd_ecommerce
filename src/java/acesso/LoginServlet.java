@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import usuario.modelo.Usuario;
 import usuario.modelo.UsuarioDAO;
@@ -39,16 +38,15 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        System.out.println(login);
-        System.out.println(senha);
-
+    
         boolean sucesso = false;
         try {
             Usuario usuario = usuarioDAO.obter(login);
-            System.out.println(usuario.getSenha());
             if (usuario.getSenha().equals(senha)) {
                 HttpSession sessao = request.getSession(true);
                 sessao.setAttribute("cliente", usuario);
+                request.setAttribute("usuario", usuario);
+
                 sucesso = true;
             }
         } catch (SQLException ex) {
