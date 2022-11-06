@@ -5,18 +5,16 @@ package categoria.controle;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-import categoria.modelo.Categoria;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+
+import categoria.modelo.Categoria;
 import categoria.modelo.CategoriaDAO;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author cindydamasceno
@@ -24,38 +22,93 @@ import java.util.List;
 public class CategoriaServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+
         CategoriaDAO categoriaDao = new CategoriaDAO();
-        List<Categoria> categorias = new ArrayList();
+        String idCategoria = request.getParameter("idCategoria");
+        
+        /// Obter todas categorias
+        if(idCategoria.isBlank()){
+            try{
+                List<Categoria> categorias = categoriaDao.obterTodos();
+                request.setAttribute("categorias", categorias);
+            }
+            catch(SQLException ex){}
+        }
+        
+        /// Obter categoria específica
+        else {
+            try{
+                int id = Integer.parseInt(idCategoria);
+                Categoria categoria = categoriaDao.obter(id);
+                request.setAttribute("categoria", categoria);
+            }
+            catch(SQLException ex){
+                request.setAttribute("mensagem", "Nenhuma categoria cadastrada");
+            }
+            catch(NumberFormatException ex){
+                request.setAttribute("mensagem", "Categoria inválida");
+            }
+        }
+        
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+        
+        String descricao = request.getParameter("descricao");
         
         try{
-            categorias = categoriaDao.obterTodos();
+            CategoriaDAO categoriaDao = new CategoriaDAO();
+            categoriaDao.inserir(descricao);
+            request.setAttribute("mensagem", "Categoria cadastrada com sucesso");
         }
-        catch (SQLException ex) {
-            
+        catch(SQLException ex){
+            request.setAttribute("mensagem", "Categoria não cadastrada");
         }
         
+    }
+    
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CategoriaServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            
-            for(int i = 0; i < categorias.size(); i++){
-                Categoria categoria = categorias.get(i);
-                String descricao = categoria.getDescricao();
-                out.println("<h1>" + descricao + "</h1>");
-            }
-            out.println("</body>");
-            out.println("</html>");
+        String id = request.getParameter("id");
+        String descricao = request.getParameter("descricao");
+        
+        try{
+            int idCategoria = Integer.parseInt(id);
+            CategoriaDAO categoriaDao = new CategoriaDAO();
+            categoriaDao.atualizar(idCategoria, descricao);
+            request.setAttribute("mensagem", "Categoria atualizada com sucesso");
+        }
+        catch(SQLException ex){
+            request.setAttribute("mensagem", "Categoria não cadastrada");
+        }
+        catch(NumberFormatException ex){
+            request.setAttribute("mensagem", "Categoria inválida");
         }
     }
+    
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
 
+        String id = request.getParameter("id");
+        
+        try{
+            int idCategoria = Integer.parseInt(id);
+            CategoriaDAO categoriaDao = new CategoriaDAO();
+            categoriaDao.remover(idCategoria);
+            request.setAttribute("mensagem", "Categoria removida com sucesso");
+        }
+        catch(SQLException ex){
+            request.setAttribute("mensagem", "Não foi possível excluir a categoria");
+        }
+        catch(NumberFormatException ex){
+            request.setAttribute("mensagem", "Categoria inválida");
+        }
+    }
 }

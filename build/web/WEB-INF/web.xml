@@ -12,6 +12,18 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>acesso.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <servlet-class>usuario.controle.UsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <servlet-class>produto.controle.ProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoEstoqueServlet</servlet-name>
+        <servlet-class>produto.controle.ProdutoEstoqueServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <url-pattern>/usuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoServlet</servlet-name>
+        <url-pattern>/produto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoEstoqueServlet</servlet-name>
+        <url-pattern>/produtoEstoque</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

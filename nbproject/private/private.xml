@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/src/java/categoria/controle/CategoriaServlet.java</file>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/src/java/DatabaseConnection/DatabaseConnection.java</file>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/web/META-INF/context.xml</file>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/web/index.jsp</file>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/src/java/categoria/modelo/CategoriaDAO.java</file>
-            <file>file:/Users/cindydamasceno/NetBeansProjects/smd_ecommerce/src/java/categoria/modelo/Categoria.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/modelo/CategoriaDAO.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/controle/CategoriaServlet.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/modelo/ProdutoDAO.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/web/cadastro.jsp</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/usuario/controle/InserirNovoUsuarioServlet.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produtoCategoria/modelo/ProdutoCategoriaDAO.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/modelo/Produto.java</file>
         </group>
     </open-files>
 </project-private>

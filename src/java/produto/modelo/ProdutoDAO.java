@@ -46,6 +46,66 @@ public class ProdutoDAO {
         return produto;
     }
     
+    public List<Produto> obterTodos() throws SQLException{
+        List<Produto> produtos = new ArrayList();
+        
+        String sql = "Select * from produto";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    Produto produto = new Produto();
+                    produto.setId(resultSet.getInt("id"));
+                    produto.setDescricao(resultSet.getString("descricao"));
+                    produto.setPreco(resultSet.getDouble("preco"));
+                    produto.setQuantidade(resultSet.getInt("quantidade"));
+                    produto.setFoto(resultSet.getString("foto"));
+                    
+                    produtos.add(produto);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return produtos;
+    }
+    
+    public List<Produto> obterTodosEmEstoque() throws SQLException{
+    List<Produto> produtos = new ArrayList();
+        
+        String sql = "Select * from produto where quantidade > 0";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    Produto produto = new Produto();
+                    produto.setId(resultSet.getInt("id"));
+                    produto.setDescricao(resultSet.getString("descricao"));
+                    produto.setPreco(resultSet.getDouble("preco"));
+                    produto.setQuantidade(resultSet.getInt("quantidade"));
+                    produto.setFoto(resultSet.getString("foto"));
+                    
+                    produtos.add(produto);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return produtos;
+    }
+    
     public List<Produto> obterPorCategoria(int idCategoria) throws SQLException{
         List<Produto> produtos = new ArrayList();
         

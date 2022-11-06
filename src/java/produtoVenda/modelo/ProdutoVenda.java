@@ -37,5 +37,8 @@ public class ProdutoVenda {
         this.quantidade = quantidade;
     }
     
+    public boolean emEstoque(){
+        return this.quantidade > 0;
+    }
     
 }

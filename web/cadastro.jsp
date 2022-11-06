@@ -23,7 +23,7 @@
     <div class = "filete"></div>
 
     <main>
-        <form method="POST" action="cadastrar" onsubmit="return validateForm()">
+        <form method="POST" action="usuario" onsubmit="return validateForm()">
             <div class="container">
               <h1>Cadastro</h1>
               <p>Please fill in this form to create an account.</p>

@@ -117,6 +117,23 @@ public class UsuarioDAO {
         }
     }
     
+    public boolean atualizarCadastro(int id, String nome, String endereco, String email) throws SQLException{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE usuario SET nome = ?, endereco = ?, email = ? WHERE id = ?")) {
+                preparedStatement.setString(1, nome);
+                preparedStatement.setString(2, endereco);
+                preparedStatement.setString(3, email);
+                preparedStatement.setInt(4, id);
+                return preparedStatement.execute();
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+    }
+    
     public boolean remover(int id) throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
