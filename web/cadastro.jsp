@@ -31,6 +31,7 @@
               
               <label for="name"><b>Name</b></label>
               <input type="text" placeholder="Enter name" name="nome" id="name" required>
+              
               <label for="login"><b>Login</b></label>
               <input type="text" placeholder="Enter login" name="login" id="login" required>
 

@@ -29,6 +29,7 @@ public class CategoriaServlet extends HttpServlet {
         String idCategoria = request.getParameter("idCategoria");
         
         /// Obter todas categorias
+      
         if(idCategoria.isBlank()){
             try{
                 List<Categoria> categorias = categoriaDao.obterTodos();
@@ -71,44 +72,5 @@ public class CategoriaServlet extends HttpServlet {
         
     }
     
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException {
-        
-        String id = request.getParameter("id");
-        String descricao = request.getParameter("descricao");
-        
-        try{
-            int idCategoria = Integer.parseInt(id);
-            CategoriaDAO categoriaDao = new CategoriaDAO();
-            categoriaDao.atualizar(idCategoria, descricao);
-            request.setAttribute("mensagem", "Categoria atualizada com sucesso");
-        }
-        catch(SQLException ex){
-            request.setAttribute("mensagem", "Categoria não cadastrada");
-        }
-        catch(NumberFormatException ex){
-            request.setAttribute("mensagem", "Categoria inválida");
-        }
-    }
-    
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException {
 
-        String id = request.getParameter("id");
-        
-        try{
-            int idCategoria = Integer.parseInt(id);
-            CategoriaDAO categoriaDao = new CategoriaDAO();
-            categoriaDao.remover(idCategoria);
-            request.setAttribute("mensagem", "Categoria removida com sucesso");
-        }
-        catch(SQLException ex){
-            request.setAttribute("mensagem", "Não foi possível excluir a categoria");
-        }
-        catch(NumberFormatException ex){
-            request.setAttribute("mensagem", "Categoria inválida");
-        }
-    }
 }

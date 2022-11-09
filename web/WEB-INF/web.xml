@@ -24,6 +24,10 @@
         <servlet-name>ProdutoEstoqueServlet</servlet-name>
         <servlet-class>produto.controle.ProdutoEstoqueServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CategoriaAtualizar</servlet-name>
+        <servlet-class>categoria.controle.CategoriaAtualizar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ProdutoEstoqueServlet</servlet-name>
         <url-pattern>/produtoEstoque</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaAtualizar</servlet-name>
+        <url-pattern>/categoriaAtualizar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
