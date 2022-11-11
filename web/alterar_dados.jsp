@@ -32,7 +32,7 @@
         
         <div class="container">
             <!-- Para o usuario normal -->
-            <form method="PUT" action="usuario" >
+            <form action="usuarioAtualizar" method="post"  >
               
               <% 
                 Usuario cliente = null;
@@ -43,19 +43,21 @@
                 if(cliente != null){        
               %>        
                 
-                <input type="hidden" name="id" id="id" value="<%= cliente.getId()%> " required>
+                <input type="hidden" name="id" value="<%= cliente.getId()%> " required>
                 
               <% } %>      
                 <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter name" name="nome" id="name" required>
+                <input type="text" placeholder="Enter name" name="nome" id="name" required><br>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                <input type="text" placeholder="Enter Email" name="email" id="email" required><br>
 
                 <label for="enderco"><b>Endereço</b></label>
                 <input type="text" placeholder="Endereco" name="endereco" id="endereco" required>
-
-                <button type="submit" class="registerbtn">Register</button>
+                
+               
+                
+                <button type="submit" class="registerbtn">Alterar</button>
                
           </form>
         </div>

@@ -66,7 +66,7 @@
                             <a href="alterar_dados.jsp" >Alterar Dados</a> 
                             <a href="#" >Deletar Dados</a> 
                             <a href="#" >Visualizar Compras</a> 
-                            <a href="../index.jsp" >Voltar</a> 
+                            <a href="index.jsp" >Voltar</a> 
                         </div>
                         
              <% } %>

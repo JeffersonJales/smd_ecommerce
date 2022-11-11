@@ -55,9 +55,11 @@
                                 <form action="logout", method="POST">
                                     
                                     <% if(cliente.isAdministrador()) { %>  <!-- inverter depois de finalizar o conteudo do if com o else -->
-                                        <a href="perfil_admin_opcoes.jsp" >PERFIL</a>
-                                    <% } else { %>
+                                        
                                         <a href="perfil_usuario.jsp" >PERFIL</a>
+                                    <% } else { %>
+                                        <a href="perfil_admin_opcoes.jsp" >PERFIL</a>
+                                        
                                         
                                     <% } %>
                                     <button type="submit">Logout</button>

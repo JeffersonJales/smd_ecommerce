@@ -6,7 +6,6 @@ package usuario.controle;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import usuario.modelo.UsuarioDAO;
  *
  * @author ivana
  */
-@WebServlet(name = "UsuarioDeletar", urlPatterns = {"/usuarioDeletar"})
 public class UsuarioDeletar extends HttpServlet {
 
    @Override
@@ -27,7 +25,7 @@ public class UsuarioDeletar extends HttpServlet {
         
         String mensagem;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        String idUsuario = request.getParameter("idUsuario");
+        String idUsuario = request.getParameter("idUsuario").trim();
         
         try{
             int id = Integer.parseInt(idUsuario);

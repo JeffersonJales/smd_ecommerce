@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>perfil_admin</title>
         <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
-        <link rel="stylesheet" href="../Style/p_admin.css">
+        <link rel="stylesheet" href="Style/p_admin.css">
     </head>
 <body>
 
@@ -64,13 +64,13 @@
                         <hr><br>
                         
                         <div class="user_op">
-                            <button type="submit" class="registerbtn">Alterar Dados</button> <br>
-                            <button type="submit" class="registerbtn">Deletar Dados</button> <br>
-                            <button type="submit" class="registerbtn">Visualizar Compras</button> <br>
-                            <a href="../Perfil/perfil_admin_opcoes.jsp" >Voltar</a> 
+                            <a href="alterar_dados.jsp" >Alterar Dados</a> 
+                            <a href="#" >Deletar Dados</a> 
+                            <a href="#" >Visualizar Compras</a> 
+                            <a href="index.jsp" >Voltar</a> 
                         </div>
-               
-             <% } %>
+
+                        <% } %>
         </div>
 
     </main>

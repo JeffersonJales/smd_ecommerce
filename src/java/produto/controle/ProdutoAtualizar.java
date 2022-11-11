@@ -17,14 +17,13 @@ import produto.modelo.ProdutoDAO;
  *
  * @author ivana
  */
-@WebServlet(name = "ProdutoAtualizar", urlPatterns = {"/produtoAtualizar"})
 public class ProdutoAtualizar extends HttpServlet {
 
    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String id = request.getParameter("idProduto");
+        String id = request.getParameter("idProduto").trim();
         String descricao = request.getParameter("descricaoProduto");
         String preco = request.getParameter("precoProduto");
         String quantidade = request.getParameter("quantidadeProduto");

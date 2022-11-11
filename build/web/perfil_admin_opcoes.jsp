@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>perfil_admin</title>
         <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
-        <link rel="stylesheet" href="../Style/p_admin_opcoes.css">
+        <link rel="stylesheet" href="Style/p_admin_opcoes.css">
     </head>
 <body>
 
@@ -31,10 +31,10 @@
         </div>
         
         <div class="container">
-              <a href="#" class="button">CATEGORIAS</a><br>
-              <a href="#" class="button">PRODUTOS</a><br>
+              <a href="adicionarCategoria.jsp" class="button">CATEGORIAS</a><br>
+              <a href="adicionarProduto.jsp" class="button">PRODUTOS</a><br>
               <a href="perfil_admin.jsp" class="button">DADOS DA CONTA</a>
-              <a href="../index.jsp" class="button">VOLTAR</a>
+              <a href="index.jsp" class="button">VOLTAR</a>
         </div>
 
     </main>

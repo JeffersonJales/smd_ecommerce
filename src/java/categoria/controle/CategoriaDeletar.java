@@ -17,14 +17,13 @@ import java.sql.SQLException;
  *
  * @author ivana
  */
-@WebServlet(name = "CategoriaDeletar", urlPatterns = {"/categoriaDeletar"})
 public class CategoriaDeletar extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+        String id = request.getParameter("id").trim();
         
         try{
             int idCategoria = Integer.parseInt(id);

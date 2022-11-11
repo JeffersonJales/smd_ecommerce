@@ -5,12 +5,19 @@
         <group>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/modelo/CategoriaDAO.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/controle/ProdutoServlet.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/controle/ProdutoDeletar.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/controle/CategoriaAtualizar.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/usuario/controle/UsuarioAtualizar.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/controle/CategoriaDeletar.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produtoCategoria/modelo/ProdutoCategoria.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/usuario/controle/UsuarioDeletar.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/controle/ProdutoEstoqueServlet.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/usuario/controle/UsuarioServlet.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/categoria/controle/CategoriaServlet.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/modelo/ProdutoDAO.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/web/cadastro.jsp</file>
-            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produtoCategoria/modelo/ProdutoCategoria.java</file>
+            <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/controle/ProdutoAtualizar.java</file>
             <file>file:/C:/Users/ivana/Desktop/Jefferson/UFC/smd_ecommerce/src/java/produto/modelo/Produto.java</file>
         </group>
     </open-files>

@@ -6,7 +6,6 @@ package usuario.controle;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import usuario.modelo.UsuarioDAO;
  *
  * @author ivana
  */
-@WebServlet(name = "UsuarioAtualizar", urlPatterns = {"/usuarioAtualizar"})
 public class UsuarioAtualizar extends HttpServlet {
 
     @Override
@@ -29,20 +27,26 @@ public class UsuarioAtualizar extends HttpServlet {
         UsuarioDAO usuarioDao = new UsuarioDAO();
         String destinoJSP = "perfil_usuario.jsp";
         
-        String id = request.getParameter("idUsuario");
-        String nome = request.getParameter("nomeUsuario");
-        String endereco = request.getParameter("enderecoUsuario");
-        String email = request.getParameter("emailUsuario");
+        String id = request.getParameter("id").trim();
+        String nome = request.getParameter("nome");
+        String endereco = request.getParameter("endereco");
+        String email = request.getParameter("email");
         
         try{
             int idUsuario = Integer.parseInt(id);
+            System.out.println("IdUsuario:" + id);
+            System.out.println("nomeUsuario:" + nome);
+            System.out.println("enderecoUsuario:" + endereco);
+            System.out.println("emailUsuario:" + email);
+
+            
             usuarioDao.atualizarCadastro(idUsuario, nome, endereco, email);
             
             mensagem = "Dados cadastrais do usuário atualizados com sucesso";
-            
         }
          catch(SQLException ex){
             mensagem = "Não foi possível atualizar cadastro.";
+             System.out.println("SQL ERROR!!!");
         }
         catch(NumberFormatException num){
             mensagem = "Usuário inválido.";
