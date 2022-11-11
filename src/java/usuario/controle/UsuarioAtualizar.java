@@ -34,14 +34,7 @@ public class UsuarioAtualizar extends HttpServlet {
         
         try{
             int idUsuario = Integer.parseInt(id);
-            System.out.println("IdUsuario:" + id);
-            System.out.println("nomeUsuario:" + nome);
-            System.out.println("enderecoUsuario:" + endereco);
-            System.out.println("emailUsuario:" + email);
-
-            
             usuarioDao.atualizarCadastro(idUsuario, nome, endereco, email);
-            
             mensagem = "Dados cadastrais do usuário atualizados com sucesso";
         }
          catch(SQLException ex){
