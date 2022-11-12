@@ -63,9 +63,15 @@
                         <hr><br>
                         
                         <div class="user_op">
-                            <a href="alterar_dados.jsp" >Alterar Dados</a> 
-                            <a href="#" >Deletar Dados</a> 
-                            <a href="#" >Visualizar Compras</a> 
+                            
+                            <a href="alterar_dados.jsp" >Alterar Dados</a><br>
+                            <a href="#" >Visualizar Compras</a><br>
+                            
+                            <form method="post" action="usuarioDeletar" >
+                                <input type="hidden" name="idUsuario" value="<%= cliente.getId()%> " required>
+                                <button type="submit" class="registerbtn">Excluir Dados de usuario</button>
+                            </form><br>  
+                            
                             <a href="index.jsp" >Voltar</a> 
                         </div>
                         

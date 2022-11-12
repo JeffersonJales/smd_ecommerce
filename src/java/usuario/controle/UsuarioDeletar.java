@@ -40,7 +40,7 @@ public class UsuarioDeletar extends HttpServlet {
         }
         
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Logout.jsp");
         dispatcher.forward(request, response);
     }
 }

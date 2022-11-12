@@ -25,7 +25,7 @@ public class UsuarioAtualizar extends HttpServlet {
         
         String mensagem;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        String destinoJSP = "perfil_usuario.jsp";
+        String destinoJSP = "PosAlterar.jsp";
         
         String id = request.getParameter("id").trim();
         String nome = request.getParameter("nome");
