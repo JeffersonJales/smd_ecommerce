@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import categoria.modelo.Categoria;
 import categoria.modelo.CategoriaDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.sql.SQLException;
 import java.util.List;
 /**
@@ -70,6 +71,8 @@ public class CategoriaServlet extends HttpServlet {
             request.setAttribute("mensagem", "Categoria não cadastrada");
         }
         
+        RequestDispatcher dispatcher = request.getRequestDispatcher("perfil_admin_opcoes.jsp");
+        dispatcher.forward(request, response);
     }
     
 

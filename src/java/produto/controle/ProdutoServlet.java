@@ -5,6 +5,7 @@ package produto.controle;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -82,6 +83,8 @@ public class ProdutoServlet extends HttpServlet {
             request.setAttribute("mensagem", "Produto não cadastrado.");
         } 
         
+        RequestDispatcher dispatcher = request.getRequestDispatcher("perfil_admin_opcoes.jsp");
+        dispatcher.forward(request, response);
     }
 
 }

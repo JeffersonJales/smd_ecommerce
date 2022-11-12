@@ -31,8 +31,8 @@
         </div>
         
         <div class="container">
-              <a href="adicionarCategoria.jsp" class="button">CATEGORIAS</a><br>
-              <a href="adicionarProduto.jsp" class="button">PRODUTOS</a><br>
+              <a href="opcoesCategoria.jsp" class="button">CATEGORIAS</a><br>
+              <a href="opcoesProdutos.jsp" class="button">PRODUTOS</a><br>
               <a href="perfil_admin.jsp" class="button">DADOS DA CONTA</a>
               <a href="index.jsp" class="button">VOLTAR</a>
         </div>
