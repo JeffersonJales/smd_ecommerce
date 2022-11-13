@@ -108,9 +108,6 @@
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
     </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>Inicio</welcome-file>
-    </welcome-file-list>
     <session-config>
         <session-timeout>
             1

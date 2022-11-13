@@ -6,9 +6,9 @@
 
 <%@page import="usuario.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="produto.controle.ProdutoEstoqueServlet"%>
 <%@page import="java.util.List"%>
 <%@page import="produto.modelo.Produto"%>
+<%@page import="produto.modelo.ProdutoDAO"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -129,7 +129,8 @@
     <div>
     <%
         NumberFormat numberFormat = new DecimalFormat ("#,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
-        List<Produto> produtosEmEstoque = (List<Produto>) request.getAttribute("produtosEmEstoque");
+        ProdutoDAO produtoDao = new ProdutoDAO();
+        List<Produto> produtosEmEstoque = produtoDao.obterTodosEmEstoque();
         if (produtosEmEstoque != null) {
     %>
     
