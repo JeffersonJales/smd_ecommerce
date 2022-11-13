@@ -21,16 +21,6 @@ import usuario.modelo.UsuarioDAO;
  */
 public class LoginServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,7 +36,6 @@ public class LoginServlet extends HttpServlet {
                 HttpSession sessao = request.getSession(true);
                 sessao.setAttribute("cliente", usuario);
                 request.setAttribute("usuario", usuario);
-                System.out.println("login session");
                 sucesso = true;
             }
         } catch (SQLException ex) {
@@ -55,12 +44,10 @@ public class LoginServlet extends HttpServlet {
         if (!sucesso) {
             request.setAttribute("erro_login", "Login ou senha incorreta");
             request.setAttribute("login", login);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
         }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
         
     }
 

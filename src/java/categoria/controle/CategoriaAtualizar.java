@@ -5,6 +5,7 @@
 package categoria.controle;
 
 import categoria.modelo.CategoriaDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,5 +38,8 @@ public class CategoriaAtualizar extends HttpServlet {
         catch(NumberFormatException ex){
             request.setAttribute("mensagem", "Categoria inválida");
         }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesCategoria.jsp");
+        dispatcher.forward(request, response);
     }
 }
