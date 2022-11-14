@@ -6,6 +6,11 @@
 
 <%@page import="usuario.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="produto.modelo.Produto"%>
+<%@page import="produto.modelo.ProdutoDAO"%>
+<%@page import="java.util.Locale"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +20,8 @@
         <title>perfil_admin</title>
         <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
         <link rel="stylesheet" href="Style/p_admin_opcoes.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
     </head>
 <body>
 
@@ -23,21 +30,61 @@
 
     <main>
         
-        <div class="barra_dados">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="https://www.w3.org/2000/svg" class="IconUser">
-                <path d="M9 8.52632C9 13.2272 13.038 17.0526 18 17.0526C22.962 17.0526 27 13.2272 27 8.52632C27 3.82547 22.962 0 18 0C13.038 0 9 3.82547 9 8.52632ZM34 36H36V34.1053C36 26.7935 29.718 20.8421 22 20.8421H14C6.28 20.8421 0 26.7935 0 34.1053V36H34Z" fill="#B6BBC2"></path>
-            </svg>
-            <h1>OPÇÕES DE PRODUTO</h1>
-        </div>
+        <h1>Produto Dashboard</h1>
         
-        <div class="container">
-              <a href="consultarProduto.jsp" class="button">CONSULTAR</a><br>
-              <a href="adicionarProduto.jsp" class="button">INSERIR</a><br>
-              <a href="atualizarProduto.jsp" class="button">ALTERAR</a>
-              <a href="deletarProduto.jsp" class="button">REMOVER</a>
-              <a href="perfil_admin_opcoes.jsp" class="button">VOLTAR</a>
-        </div>
+        <form action="produto" method="post"  >
+            <h4> Adicionar um novo produto</h4>
+            <label for="descricaoProduto"><b>Descrição</b></label>
+            <input type="text" placeholder="Descriçao" name="descricaoProduto" id="descricaoProduto" required>
+            <br>
+            <label for="precoProduto"><b>Preço</b></label>
+            <input type="number" placeholder="9.99" name="precoProduto" id="precoProduto" required>
+            <br>
+            <label for="quantidadeProduto"><b>Quantidade</b></label>
+            <input type="number" placeholder="1" name="quantidadeProduto" id="quantidadeProduto" required>
+            <br>
+            <button type="submit" class="registerbtn">Adicionar</button>
+        </form>
+        
+        <%
+            ProdutoDAO produtoDao = new ProdutoDAO();
+            List<Produto> produtos = produtoDao.obterTodos();
+            
+            if(produtos.isEmpty()){ 
+        %>
+                <h4> Nenhum produto cadastrado </h4>
+        <% } 
+            else { 
+        %>
+                <h4> produtos cadastrados </h4> <br>
 
+        <%       
+                for (Produto pr : produtos) {
+        %>
+        
+        <div> 
+            <form action="produtoAtualizar" method="post">
+                <h5> <%= pr.getId()%> - <b> <%= pr.getDescricao() %> </b> | R$ <b> <%= pr.getPreco() %> </b> | Estoque: <b> <%= pr.getQuantidade() %>  </b>  </h5>
+                <input type="hidden" name="idProduto" value="<%= pr.getId()%> " required>
+                <label for="descricaoProduto"><b>Descrição</b></label>
+                <input type="text" value="<%= pr.getDescricao()%>" name="descricaoProduto" id="descricaoProduto" required>
+                <label for="precoProduto"><b>Preço</b></label>
+                <input type="number" min="1.00" name="precoProduto" value="<%= pr.getPreco()%>" required>
+                <label for="quantidadeProduto"><b>Quantidade</b></label>
+                <input type="number" min="0" name="quantidadeProduto" value="<%= pr.getQuantidade()%>" required>
+                <button type="submit" class="registerbtn">Atualizar </button>
+            </form>
+            
+            <form action="produtoDeletar" method="post" > 
+                <input type="hidden" name="idProduto" value="<%= pr.getId()%>" required>
+                <button type="submit" class="registerbtn">Deletar</button>
+            </form>
+            <br>
+        </div>
+        <%      }
+            } 
+        %>
+        
     </main>
 
     <footer></footer>

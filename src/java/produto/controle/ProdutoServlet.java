@@ -83,7 +83,7 @@ public class ProdutoServlet extends HttpServlet {
             request.setAttribute("mensagem", "Produto não cadastrado.");
         } 
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("perfil_admin_opcoes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesProdutos.jsp");
         dispatcher.forward(request, response);
     }
 

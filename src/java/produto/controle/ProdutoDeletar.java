@@ -4,8 +4,8 @@
  */
 package produto.controle;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -41,6 +41,7 @@ public class ProdutoDeletar extends HttpServlet {
         catch(SQLException ex){
             request.setAttribute("mensagem", "Produto não excluido.");
         } 
-        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesProdutos.jsp");
+        dispatcher.forward(request, response);
     }
 }

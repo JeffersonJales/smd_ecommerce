@@ -1,6 +1,6 @@
 <%-- 
-    Document   : consultarProduto
-    Created on : 11 de nov. de 2022, 22:16:45
+    Document   : login]
+    Created on : 14/10/2022, 17:36:05
     Author     : Usuário
 --%>
 
@@ -10,7 +10,7 @@
 <%@page import="java.util.Locale"%>
 <%@page import="produto.modelo.Produto" %>
 <%@page import="java.util.List" %>
-
+<%@page import="categoria.modelo.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -31,13 +31,13 @@
     <main>
         
         <div class="barra_dados">
-            <h1>PRODUTOS</h1>
+            <h1>CATEGORIAS</h1>
         </div>
         
         <div class="container">
              <%
-                List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
-                if (produtos != null) {
+                List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
+                if (categorias != null) {
 
              %>
                 
@@ -47,7 +47,7 @@
                         
                     
                     <%
-                        for (Produto pe : produtos) {
+                        for (Categoria pe : categorias) {
 
                     %>
                             

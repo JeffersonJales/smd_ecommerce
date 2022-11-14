@@ -4,6 +4,7 @@
  */
 package produto.controle;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,7 +24,10 @@ public class ProdutoAtualizar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String id = request.getParameter("idProduto").trim();
+        String id = request.getParameter("idProduto");
+        if (id != null){
+            id = id.trim();
+        }
         String descricao = request.getParameter("descricaoProduto");
         String preco = request.getParameter("precoProduto");
         String quantidade = request.getParameter("quantidadeProduto");
@@ -49,5 +53,7 @@ public class ProdutoAtualizar extends HttpServlet {
         catch(SQLException ex){
             request.setAttribute("mensagem", "Produto não atualizado.");
         } 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesProdutos.jsp");
+        dispatcher.forward(request, response);
     }
 }

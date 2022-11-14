@@ -59,6 +59,7 @@
         <div> 
             <form action="categoriaAtualizar" method="post">
                 <input type="hidden" name="id" value="<%= ca.getId()%> " required>
+                <h5> <%= ca.getId() %> - <b> <%= ca.getDescricao() %> </b> </h5>
                 <input type="text" value="<%= ca.getDescricao()%>" name="descricao" id="descricao" required>
                 <button type="submit" class="registerbtn">Atualizar </button>
             </form>
