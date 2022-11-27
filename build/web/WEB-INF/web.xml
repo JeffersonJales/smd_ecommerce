@@ -56,6 +56,22 @@
         <servlet-name>Inicio</servlet-name>
         <servlet-class>inicio.Inicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarrinhoCompraServlet</servlet-name>
+        <servlet-class>carrinhoCompra.controle.CarrinhoCompraServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdicionarCarrinhoCompraItemServlet</servlet-name>
+        <servlet-class>carrinhoCompra.controle.AdicionarCarrinhoCompraItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoverCarrinhoCompraItemServlet</servlet-name>
+        <servlet-class>carrinhoCompra.controle.RemoverCarrinhoCompraItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChecarCarrinhoCompraServlet</servlet-name>
+        <servlet-class>carrinhoCompra.controle.ChecarCarrinhoCompraServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -107,6 +123,22 @@
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoCompraServlet</servlet-name>
+        <url-pattern>/carrinhoCompra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdicionarCarrinhoCompraItemServlet</servlet-name>
+        <url-pattern>/AdicionarCarrinhoCompraItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoverCarrinhoCompraItemServlet</servlet-name>
+        <url-pattern>/RemoverCarrinhoCompraItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChecarCarrinhoCompraServlet</servlet-name>
+        <url-pattern>/ChecarCarrinhoCompraServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

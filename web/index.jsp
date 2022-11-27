@@ -2,7 +2,6 @@
 
 <%@page import="usuario.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
 <%@page import="produto.modelo.Produto"%>
 <%@page import="produto.modelo.ProdutoDAO"%>
 <%@page import="java.text.NumberFormat"%>
@@ -32,7 +31,7 @@
                         <h5 class="card-title"><%= pe.getDescricao() %></h5>
                         <p class="card-text">
                             Preço <strong>R$ <%= numberFormat.format(pe.getPreco()) %></strong><br/>
-                            <a href="AdicionarCarrinhoProduto?produtoId=<%= pe.getId() %>" class="btn btn-danger mt-2">Adicionar</a>
+                            <a href="AdicionarCarrinhoCompraItemServlet?produtoId=<%= pe.getId() %>" class="btn btn-danger mt-2">Adicionar</a>
                         </p>
                     </div>
                     <div class="card-footer"><small class="text-muted">Quantidade: <strong><%= pe.getQuantidade() %></strong></small></div>
