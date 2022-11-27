@@ -37,7 +37,6 @@
             <label for="descricao"><b>Descrição</b></label>
             <input type="text" placeholder="Descriçao" name="descricao" id="descricao" required>
             <button type="submit" class="registerbtn">Adicionar</button>
-
         </form>
         
         <%
