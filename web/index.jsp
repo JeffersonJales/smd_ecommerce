@@ -19,25 +19,6 @@
     if (produtosEmEstoque != null) {
 %>
     
-<nav>
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn"> DEPARTAMENTOS 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Computadores</a>
-                <a href="#">Processadores</a>
-                <a href="#">Placas mãe</a>
-                <a href="#">Placas de video</a>
-            </div>
-        </div>
-        <a href="#">ELETRÔNICOS </a>
-        <a href="#">LANÇAMENTOS </a>
-        <a href="#">PCGAMER </a>
-    </div>    
-</nav>
-
 <div class="alert alert-primary mt-3" role="alert">
     Produtos em Estoque
 </div>

@@ -8,21 +8,6 @@ and open the template in the editor.
     Author     : Usuário
 */
 
-body{
-    width: 100%;
-}
-
-header{
-    width: 100%;
-    background-color: green;
-    height: 60px;
-}
-
-.filete{
-    width: 100%;
-    background-color: orange;
-    height: 30px;
-}
 
 main{
     display: grid;
@@ -30,7 +15,7 @@ main{
     justify-content: center;
     margin-top: 10px;
     align-items: center;
-  }
+}
 
 .barra_dados {
     display: flex;
