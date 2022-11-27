@@ -72,6 +72,10 @@
         <servlet-name>ChecarCarrinhoCompraServlet</servlet-name>
         <servlet-class>carrinhoCompra.controle.ChecarCarrinhoCompraServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarVenda</servlet-name>
+        <servlet-class>venda.controle.CadastrarVenda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -139,6 +143,10 @@
     <servlet-mapping>
         <servlet-name>ChecarCarrinhoCompraServlet</servlet-name>
         <url-pattern>/ChecarCarrinhoCompraServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarVenda</servlet-name>
+        <url-pattern>/cadastrarVenda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

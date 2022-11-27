@@ -4,15 +4,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="produto.modelo.Produto"%>
 <%@page import="produto.modelo.ProdutoDAO"%>
-<%@page import="java.text.NumberFormat"%>
-<%@page import="java.text.DecimalFormatSymbols"%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="java.util.Locale"%>
 
 <%@include file="header.jsp" %>
 
 <%
-    NumberFormat numberFormat = new DecimalFormat ("#,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
     ProdutoDAO produtoDao = new ProdutoDAO();
     List<Produto> produtosEmEstoque = produtoDao.obterTodosEmEstoque();
     if (produtosEmEstoque != null) {
@@ -30,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= pe.getDescricao() %></h5>
                         <p class="card-text">
-                            Preço <strong>R$ <%= numberFormat.format(pe.getPreco()) %></strong><br/>
+                            Preço <strong>R$ <%= nf.format(pe.getPreco()) %></strong><br/>
                             <a href="AdicionarCarrinhoCompraItemServlet?produtoId=<%= pe.getId() %>" class="btn btn-danger mt-2">Adicionar</a>
                         </p>
                     </div>
@@ -44,6 +39,5 @@
     <% 
         }
     %> 
-    </div>
-    
+</div>
 <%@include file="footer.jsp" %>
