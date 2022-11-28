@@ -40,7 +40,7 @@
 </div> 
 
 <h5> Preço total: <%= nf.format(total)%>  </h5>
-<form action="cadastrarVenda" action="POST">
+<form action="cadastrarVenda" method="POST">
     <button type="submit" class="registerbtn">Finalizar compra</button>
 </form>
 <% } %>
