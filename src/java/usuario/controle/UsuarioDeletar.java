@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import usuario.modelo.UsuarioDAO;
@@ -39,8 +40,11 @@ public class UsuarioDeletar extends HttpServlet {
             mensagem = "Usuário inválido.";
         }
         
+        HttpSession sessao = request.getSession();
+        sessao.invalidate();
+        
         request.setAttribute("mensagem", mensagem);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Logout.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
 }

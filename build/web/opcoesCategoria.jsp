@@ -6,41 +6,57 @@
 
 <%@page import="usuario.modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>perfil_admin</title>
-        <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
-        <link rel="stylesheet" href="Style/p_admin_opcoes.css">
-    </head>
-<body>
+<%@page import="java.util.List"%>
+<%@page import="categoria.modelo.Categoria"%>
+<%@page import="categoria.modelo.CategoriaDAO"%>
+<%@page import="java.util.Locale"%>
 
-    <header></header>
-    <div class = "filete"></div>
+<%@include file="header.jsp" %>
 
-    <main>
-        
-        <div class="barra_dados">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="https://www.w3.org/2000/svg" class="IconUser">
-                <path d="M9 8.52632C9 13.2272 13.038 17.0526 18 17.0526C22.962 17.0526 27 13.2272 27 8.52632C27 3.82547 22.962 0 18 0C13.038 0 9 3.82547 9 8.52632ZM34 36H36V34.1053C36 26.7935 29.718 20.8421 22 20.8421H14C6.28 20.8421 0 26.7935 0 34.1053V36H34Z" fill="#B6BBC2"></path>
-            </svg>
-            <h1>OPÇÕES DE CATEGORIA</h1>
-        </div>
-        
-        <div class="container">
-            <a href="consultarCategoria.jsp" class="button">CONSULTAR</a><br>
-              <a href="adicionarCategoria.jsp" class="button">INSERIR</a><br>
-              <a href="atualizarCategoria.jsp" class="button">ALTERAR</a>
-              <a href="deletarCategoria.jsp" class="button">REMOVER</a>
-              <a href="perfil_admin_opcoes.jsp" class="button">VOLTAR</a>
-        </div>
+<link rel="stylesheet" href="Style/p_admin_opcoes.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    </main>
+<main>
+    <h1>Categoria Dashboard</h1>
 
-    <footer></footer>
+    <form action="categoria" method="post"  >
+        <h4> Adicionar uma nova categoria</h4>
+        <label for="descricao"><b>Descrição</b></label>
+        <input type="text" placeholder="Descriçao" name="descricao" id="descricao" required>
+        <button type="submit" class="registerbtn">Adicionar</button>
+    </form>
 
-</body>
-</html>
+    <%
+        CategoriaDAO categoriaDao = new CategoriaDAO();
+        List<Categoria> categorias = categoriaDao.obterTodos();
+
+        if(categorias.isEmpty()){ 
+    %>
+            <h4> Nenhuma categoria cadastrada </h4>
+    <% } 
+        else { 
+    %>
+            <h4> Categorias cadastradas </h4> <br>
+
+    <%       
+            for (Categoria ca : categorias) {
+    %>
+
+    <div> 
+        <form action="categoriaAtualizar" method="post">
+            <input type="hidden" name="id" value="<%= ca.getId()%> " required>
+            <h5> <%= ca.getId() %> - <b> <%= ca.getDescricao() %> </b> </h5>
+            <input type="text" value="<%= ca.getDescricao()%>" name="descricao" id="descricao" required>
+            <button type="submit" class="registerbtn">Atualizar </button>
+        </form>
+
+        <form action="categoriaDeletar" method="post" > 
+            <input type="hidden" name="id" value="<%= ca.getId()%>" required>
+            <button type="submit" class="registerbtn">Deletar</button>
+        </form>
+    </div>
+    <%      }
+        } 
+    %>
+</main>
+<%@include file="footer.jsp" %>

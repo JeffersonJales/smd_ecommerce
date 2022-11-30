@@ -71,7 +71,7 @@ public class CategoriaServlet extends HttpServlet {
             request.setAttribute("mensagem", "Categoria não cadastrada");
         }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("perfil_admin_opcoes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesCategoria.jsp");
         dispatcher.forward(request, response);
     }
     

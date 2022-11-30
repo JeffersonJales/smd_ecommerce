@@ -9,9 +9,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import usuario.modelo.UsuarioDAO;
+import usuario.modelo.Usuario;
 
 /**
  *
@@ -24,17 +26,19 @@ public class UsuarioAtualizar extends HttpServlet {
             throws ServletException, IOException {
         
         String mensagem;
+        Usuario usuario = null; 
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        String destinoJSP = "PosAlterar.jsp";
         
         String id = request.getParameter("id").trim();
         String nome = request.getParameter("nome");
         String endereco = request.getParameter("endereco");
         String email = request.getParameter("email");
+        String destinoJSP = "perfil_usuario.jsp";
         
         try{
             int idUsuario = Integer.parseInt(id);
             usuarioDao.atualizarCadastro(idUsuario, nome, endereco, email);
+            usuario = usuarioDao.obter(idUsuario);
             mensagem = "Dados cadastrais do usuário atualizados com sucesso";
         }
          catch(SQLException ex){
@@ -43,6 +47,15 @@ public class UsuarioAtualizar extends HttpServlet {
         }
         catch(NumberFormatException num){
             mensagem = "Usuário inválido.";
+        }
+        
+        if(usuario.isAdministrador()){
+            destinoJSP = "perfil_admin_opcoes.jsp";
+        }
+        
+        HttpSession sessao = request.getSession(false);
+        if(sessao != null){
+            sessao.setAttribute("cliente", usuario);
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(destinoJSP);

@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author cindydamasceno
@@ -79,6 +83,39 @@ public class UsuarioDAO {
         
         return usuario;
     }
+    
+    
+    
+    /*NOVA FUNCAO INSERIDA*/
+    public List<Usuario> obterTodos() throws SQLException{
+        List<Usuario> resultado = new ArrayList();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Statement statement = connection.createStatement(); 
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM USUARIO")){
+                while(resultSet.next()){
+                    Usuario usuario = new Usuario();
+                    usuario.setId(resultSet.getInt("id"));
+                    usuario.setNome(resultSet.getString("nome"));
+                    usuario.setEmail(resultSet.getString("email"));
+                    usuario.setEndereco(resultSet.getString("endereco"));
+                    usuario.setLogin(resultSet.getString("login"));
+                    usuario.setSenha(resultSet.getString("senha"));
+                    resultado.add(usuario); 
+                }
+            }
+        }
+        catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return resultado;
+    }
+    
+    
     
     public boolean inserir(String nome, String endereco, String email, String login, String senha) throws SQLException{
         try {

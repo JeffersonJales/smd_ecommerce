@@ -5,6 +5,7 @@
 package categoria.controle;
 
 import categoria.modelo.CategoriaDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,6 +38,9 @@ public class CategoriaDeletar extends HttpServlet {
         catch(NumberFormatException ex){
             request.setAttribute("mensagem", "Categoria inválida");
         }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesCategoria.jsp");
+        dispatcher.forward(request, response);
     }
 
 
