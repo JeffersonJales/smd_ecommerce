@@ -3,13 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package venda.modelo;
-
+import venda.modelo.Venda;
 import categoria.modelo.Categoria;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,14 +74,23 @@ public class VendaDAO {
         return vendas;
     }
     
-    public boolean inserir(int idUsuario) throws SQLException{
+    public Venda inserir(int idUsuario) throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO venda (id_usuario) VALUES (?)")) {
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO venda (id_usuario) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, idUsuario);
-                return preparedStatement.execute();
+                preparedStatement.execute();
+                
+                ResultSet result = preparedStatement.getGeneratedKeys();
+                result.next();
+                
+                Venda venda = new Venda();
+                venda.setId(result.getInt(1));
+                venda.setIdUsuario(idUsuario);
+                
+                return venda;
             }
         } catch (ClassNotFoundException ex) {
             throw new SQLException(ex.getMessage());
