@@ -21,7 +21,9 @@
     <div class="container">
           <a href="opcoesCategoria.jsp" class="button">CATEGORIAS</a><br>
           <a href="opcoesProdutos.jsp" class="button">PRODUTOS</a><br>
-          <a href="perfil_admin.jsp" class="button">DADOS DA CONTA</a>
+          <a href="perfil_admin.jsp" class="button">DADOS DA CONTA</a><br>
+          <a href="visualizacao&remocao.jsp" class="button">VISUALIZAÇÃO E EXCLUSÃO DE COMPRAS</a><br>
+          <a href="#" class="button">RELATÓRIOS GERENCIAIS</a><br>
           <a href="index.jsp" class="button">VOLTAR</a>
     </div>
 
