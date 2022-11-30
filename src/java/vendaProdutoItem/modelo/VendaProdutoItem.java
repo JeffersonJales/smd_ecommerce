@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package vendaProdutoItem.modelo;
+import java.util.ArrayList;
 import java.util.List;
 import produto.modelo.Produto;
 import venda.modelo.Venda;
@@ -10,7 +11,12 @@ import venda.modelo.Venda;
 public class VendaProdutoItem {
     private Venda venda;
     private List<Produto> produtos;
-
+    
+    public VendaProdutoItem(){
+        this.venda = new Venda();
+        this.produtos = new ArrayList();
+    }
+    
     public Venda getVenda() {
         return venda;
     }

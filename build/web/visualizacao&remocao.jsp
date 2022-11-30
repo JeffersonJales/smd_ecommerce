@@ -1,17 +1,14 @@
 <%-- 
     Document   : login]
     Created on : 14/10/2022, 17:36:05
-    Author     : Usuário
+    Author     : Usu�rio
 --%>
 
-<%@page import="usuario.modelo.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
 <%@page import="categoria.modelo.Categoria"%>
 <%@page import="categoria.modelo.CategoriaDAO"%>
-<%@page import="usuario.modelo.Usuario"%>
 <%@page import="usuario.modelo.UsuarioDAO"%>
-<%@page import="java.util.Locale"%>
+<%@page import="vendaProdutoItem.modelo.VendaProdutoItem"%>
+<%@page import="vendaProdutoItem.modelo.VendaProdutoItemDAO"%>
 
 <%@include file="header.jsp" %>
 
@@ -24,8 +21,7 @@
     
     <%
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        List<Usuario> usuarios = usuarioDao.obterTodos(); /*Existentes*/
-        
+        List<Usuario> usuarios = usuarioDao.obterTodos();
 
         if(usuarios.isEmpty()){ 
     %>
@@ -37,31 +33,32 @@
 
     <%       
             for (Usuario us : usuarios) {  /*for (Compras cp : compras){*/
+                
+                VendaProdutoItemDAO comprasDao = new VendaProdutoItemDAO();
+                List<VendaProdutoItem> compras = comprasDao.obter(us.getId());
+                
+                for (VendaProdutoItem cp : compras){
     %>
-
+                
+                
     <div> 
           <h5> <%= us.getId() %> - <b> <%= us.getNome() %> </b> </h5>
           <h4>Compras efetuadas</h4>
           <br>
-          <label for="login"><b>Login</b></label><br>
-          <%= us.getLogin() %>
+          <label for="dataehora"><b>Data e hora</b></label><br>
+          <%= cp.getVenda().getId() %>
           <br>
-          <label for="email"><b>Email</b></label><br>
-          <%= us.getEmail() %>
-          <br>
-          <label for="enderco"><b>Endereço</b></label><br>
-          <%= us.getEndereco() %>
-          <br>
-          <label for="psw"><b>Password</b></label><br>
-          <%= us.getSenha() %><hr><br>
+         
+          
 
         <form action="#" method="post" > 
-            <input type="hidden" name="id" value="<%= us.getId()%>" required>
+            <input type="hidden" name="id" value="<%= us.getId() %>" required>
             <button type="submit" class="registerbtn">Deletar</button>
         </form>
     </div>       
     <%      }
-        } 
+        }
+     }  
     %>
     <hr><br>
     <a href="index.jsp" >Voltar</a> 

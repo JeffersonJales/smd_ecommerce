@@ -5,6 +5,7 @@
 package relatorios.modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +19,10 @@ import produto.modelo.Produto;
  * @author jeffe
  */
 public class RelatoriosDAO {
-    public List<Produto> RelatorioEstoque() throws SQLException {
+    public List<Produto> Estoque() throws SQLException {
         List<Produto> produtos = new ArrayList();
         
-        String sql = "Select * from produto where quantidade == 0 order by descricao";
+        String sql = "Select * from produto where quantidade = 0 order by descricao;";
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -46,5 +47,34 @@ public class RelatoriosDAO {
         }
         
         return produtos;
+    }
+    
+    public List<RelatorioFaturamento> Faturamento(Date inicio, Date fim) throws SQLException{
+        List<RelatorioFaturamento> rfs = new ArrayList();
+        
+        String sql = "select * from";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setDate(1, inicio);
+                preparedStatement.setDate(2, fim);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    RelatorioFaturamento rf = new RelatorioFaturamento();
+                    rf.setData(resultSet.getDate("data"));
+                    rf.setValor(resultSet.getDouble("valor"));
+                    rfs.add(rf);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return rfs;
     }
 }

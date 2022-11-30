@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import produto.modelo.Produto;
-
+import venda.modelo.Venda;
 /**
  *
  * @author jeffe
@@ -20,9 +20,9 @@ import produto.modelo.Produto;
 public class VendaProdutoItemDAO {
     public List<VendaProdutoItem> obter(int idUsuario) throws SQLException{
         List<VendaProdutoItem> vendaProdutoItem = new ArrayList();
-        String sql = "select v.id, v.data_hora, p.descricao, pv.quantidade from venda v\n" +
-                        "inner join produto_venda pv on v.id = pv.id_venda\n" +
-                        "inner join produto p on p.id = pv.id_produto\n" +
+        String sql = "select v.id, v.data_hora, p.descricao, pv.quantidade from venda v " +
+                        "inner join produto_venda pv on v.id = pv.id_venda " +
+                        "inner join produto p on p.id = pv.id_produto " +
                         "where v.id_usuario = ?;";
         
         try {
