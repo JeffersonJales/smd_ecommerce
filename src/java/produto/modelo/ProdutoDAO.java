@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import produtoCategoria.modelo.ProdutoCategoria;
 
 /**
  *
@@ -77,7 +76,7 @@ public class ProdutoDAO {
     }
     
     public List<Produto> obterTodosEmEstoque() throws SQLException{
-    List<Produto> produtos = new ArrayList();
+        List<Produto> produtos = new ArrayList();
         
         String sql = "Select * from produto where quantidade > 0";
         
