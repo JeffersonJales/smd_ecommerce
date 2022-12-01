@@ -80,6 +80,18 @@
         <servlet-name>ExcluirVendaServlet</servlet-name>
         <servlet-class>venda.controle.ExcluirVendaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ObterRelatorioClienteServlet</servlet-name>
+        <servlet-class>relatorios.controle.ObterRelatorioClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObterRelatorioEstoqueServlet</servlet-name>
+        <servlet-class>relatorios.controle.ObterRelatorioEstoqueServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ObterRelatorioFaturamentoServlet</servlet-name>
+        <servlet-class>relatorios.controle.ObterRelatorioFaturamentoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -155,6 +167,18 @@
     <servlet-mapping>
         <servlet-name>ExcluirVendaServlet</servlet-name>
         <url-pattern>/ExcluirVendaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObterRelatorioClienteServlet</servlet-name>
+        <url-pattern>/ObterRelatorioClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObterRelatorioEstoqueServlet</servlet-name>
+        <url-pattern>/ObterRelatorioEstoqueServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObterRelatorioFaturamentoServlet</servlet-name>
+        <url-pattern>/ObterRelatorioFaturamentoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

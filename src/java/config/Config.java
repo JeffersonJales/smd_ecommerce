@@ -56,10 +56,13 @@ public final class Config {
         return usuario.isAdministrador();
     }
     
-    public static void redirectNotAdm(String jsp, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+    public static void redirectNotAdm(HttpServletRequest req, HttpServletResponse res, String jsp) throws ServletException, IOException{
         req.setAttribute("mensagem", "Conteúdo exclusivo apenas para administradores");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("visualizacao&remocao.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher(jsp);
         dispatcher.forward(req, res);
     }
     
+    public static void redirectNotAdm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        redirectNotAdm(req, res, "index.jsp");
+    }
 }

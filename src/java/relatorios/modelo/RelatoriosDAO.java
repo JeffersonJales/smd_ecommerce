@@ -5,7 +5,8 @@
 package relatorios.modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,13 +61,17 @@ public class RelatoriosDAO {
             "where v.data_hora >= ? AND  v.data_hora <= ?) " +
             "select dia, sum(total_preco) as valor from tab1 group by dia order by dia;";
         
+        java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
+        java.sql.Date dataFim = new java.sql.Date(fim.getTime());
+
+                
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setDate(1, inicio);
-                preparedStatement.setDate(2, fim);
+                preparedStatement.setDate(1, dataInicio);
+                preparedStatement.setDate(2, dataFim);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 
@@ -96,13 +101,16 @@ public class RelatoriosDAO {
             "where v.data_hora >= ? AND  v.data_hora <= ?)" +
             "select id, nome, sum(quantidade) as total_compra from tab1 group by id order by total_compra desc;";
         
+        java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
+        java.sql.Date dataFim = new java.sql.Date(fim.getTime());
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setDate(1, inicio);
-                preparedStatement.setDate(2, fim);
+                preparedStatement.setDate(1, dataInicio);
+                preparedStatement.setDate(2, dataFim);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 

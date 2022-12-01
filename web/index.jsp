@@ -1,7 +1,6 @@
 
 
 <%@page import="usuario.modelo.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="produto.modelo.Produto"%>
 <%@page import="produto.modelo.ProdutoDAO"%>
 
@@ -25,7 +24,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= pe.getDescricao() %></h5>
                         <p class="card-text">
-                            PreÃ§o <strong>R$ <%= nf.format(pe.getPreco()) %></strong><br/>
+                            Preço <strong>R$ <%= nf.format(pe.getPreco()) %></strong><br/>
                             <a href="AdicionarCarrinhoCompraItemServlet?produtoId=<%= pe.getId() %>" class="btn btn-danger mt-2">Adicionar</a>
                         </p>
                     </div>
