@@ -15,7 +15,7 @@
     <h1> Produtos fora de estoque </h1>
     
     <% for(Produto p : produtos){ %>
-        <h4> <%= p.getId() %> - <%= p.getDescricao() %> </h4>
+        <h4> Id: <%= p.getId() %> - Nome: <%= p.getDescricao() %> - R$<%= nf.format(p.getPreco()) %> </h4>
         <br>
     <% } %>
 <% } else { %>
