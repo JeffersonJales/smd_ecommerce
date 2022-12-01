@@ -9,6 +9,8 @@
 <%@page import="usuario.modelo.UsuarioDAO"%>
 <%@page import="vendaProdutoItem.modelo.VendaProdutoItem"%>
 <%@page import="vendaProdutoItem.modelo.VendaProdutoItemDAO"%>
+<%@page import="produto.modelo.ProdutoDAO"%>
+<%@page import="produto.modelo.Produto"%>
 
 <%@include file="header.jsp" %>
 
@@ -17,7 +19,6 @@
 
 <main>
     <h1>Lista de Clientes e compras efetuadas</h1>
-    
     
     <%
         UsuarioDAO usuarioDao = new UsuarioDAO();
@@ -33,24 +34,38 @@
 
     <%       
             for (Usuario us : usuarios) {  /*for (Compras cp : compras){*/
-                
+    %>
+          
+           <h5> <%= us.getId() %> - <b> <%= us.getNome() %> </b> </h5>
+           <h4>Compras efetuadas</h4><br>
+    <%       
                 VendaProdutoItemDAO comprasDao = new VendaProdutoItemDAO();
                 List<VendaProdutoItem> compras = comprasDao.obter(us.getId());
                 
                 for (VendaProdutoItem cp : compras){
     %>
-                
-                
+                             
     <div> 
-          <h5> <%= us.getId() %> - <b> <%= us.getNome() %> </b> </h5>
-          <h4>Compras efetuadas</h4>
-          <br>
+          <label for="idvenda"><b>Id Venda</b></label><br>
+          <%= cp.getVenda().getId() %> <br>
           <label for="dataehora"><b>Data e hora</b></label><br>
-          <%= cp.getVenda().getId() %>
-          <br>
-         
+          <%= cp.getVenda().getDataHora() %> <br>
           
-
+          <% 
+                
+               for(Produto pd : cp.getProdutos()){   
+ 
+          %>
+              
+              <label for="descricao"><b>Descrição</b></label><br>
+                        <%= pd.getDescricao() %> <br>
+              <label for="quantidade"><b>Quantidade</b></label><br>                         
+                        <%= pd.getQuantidade() %> <br>
+            <% 
+                }
+            %>  
+          <br>
+          
         <form action="#" method="post" > 
             <input type="hidden" name="id" value="<%= us.getId() %>" required>
             <button type="submit" class="registerbtn">Deletar</button>
