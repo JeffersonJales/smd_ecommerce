@@ -4,8 +4,14 @@
  */
 package config;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Properties;
+import usuario.modelo.Usuario;
 
 /**
  *
@@ -39,4 +45,21 @@ public final class Config {
             return null;
         }
     }
+    
+    public static boolean isADM(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session == null) return false;
+        
+        Usuario usuario = (Usuario) session.getAttribute("cliente");
+        if(usuario == null) return false;
+        
+        return usuario.isAdministrador();
+    }
+    
+    public static void redirectNotAdm(String jsp, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        req.setAttribute("mensagem", "Conteúdo exclusivo apenas para administradores");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("visualizacao&remocao.jsp");
+        dispatcher.forward(req, res);
+    }
+    
 }

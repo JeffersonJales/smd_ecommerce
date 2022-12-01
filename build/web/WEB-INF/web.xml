@@ -76,6 +76,10 @@
         <servlet-name>CadastrarVenda</servlet-name>
         <servlet-class>venda.controle.CadastrarVenda</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluirVendaServlet</servlet-name>
+        <servlet-class>venda.controle.ExcluirVendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -147,6 +151,10 @@
     <servlet-mapping>
         <servlet-name>CadastrarVenda</servlet-name>
         <url-pattern>/cadastrarVenda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirVendaServlet</servlet-name>
+        <url-pattern>/ExcluirVendaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

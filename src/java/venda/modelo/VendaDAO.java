@@ -96,4 +96,18 @@ public class VendaDAO {
             throw new SQLException(ex.getMessage());
         }
     }
+    
+    public boolean remover(int idVenda) throws SQLException{
+    try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM venda where id = ?")){
+                preparedStatement.setInt(1, idVenda);
+                return preparedStatement.execute();
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+    }
 }
