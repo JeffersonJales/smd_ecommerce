@@ -52,7 +52,13 @@ public class RelatoriosDAO {
     public List<RelatorioFaturamento> Faturamento(Date inicio, Date fim) throws SQLException{
         List<RelatorioFaturamento> rfs = new ArrayList();
         
-        String sql = "select * from";
+        String sql = 
+        "WITH tab1 as (select CAST(v.data_hora as DATE) as dia, p.descricao, " +
+	"p.preco, pv.quantidade, (pv.quantidade * p.preco) as total_preco from venda v " +
+        "inner join produto_venda pv on pv.id_venda = v.id " +
+        "inner join produto p on p.id = pv.id_produto " + 
+        "where v.data_hora >= ? AND  v.data_hora <= ?) " +
+        "select dia, sum(total_preco) as valor from tab1 group by dia order by dia;";
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -66,7 +72,7 @@ public class RelatoriosDAO {
                 
                 while(resultSet.next()){
                     RelatorioFaturamento rf = new RelatorioFaturamento();
-                    rf.setData(resultSet.getDate("data"));
+                    rf.setData(resultSet.getDate("dia"));
                     rf.setValor(resultSet.getDouble("valor"));
                     rfs.add(rf);
                 }
@@ -77,4 +83,6 @@ public class RelatoriosDAO {
         
         return rfs;
     }
+
+    
 }
