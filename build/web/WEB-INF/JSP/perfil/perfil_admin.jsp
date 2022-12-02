@@ -47,7 +47,7 @@
             <div class="user_op">
 
                 <a href="user?url=perfil/alterar_dados.jsp" >Alterar Dados</a><br>
-                <a href="user?url=visualizaoCompras/visualizacaoCompras.jsp" >Visualizar Compras</a><br>
+                <a href="user?url=vendas/visualizacaoCompras.jsp" >Visualizar Compras</a><br>
                 <form method="post" action="usuarioDeletar" >
                     <input type="hidden" name="idUsuario" value="<%= cliente.getId()%> " required>
                     <button type="submit" class="registerbtn">Excluir Dados de usuario</button>

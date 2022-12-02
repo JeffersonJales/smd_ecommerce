@@ -37,7 +37,7 @@ public class ExcluirVendaServlet extends HttpServlet {
             }
 
             request.setAttribute("mensagem", mensagem);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("visualizacao&remocao.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/vendas/visualizacao&remocao.jsp");
             dispatcher.forward(request, response);
         }
     }        
