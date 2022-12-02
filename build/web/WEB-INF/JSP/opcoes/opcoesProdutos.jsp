@@ -4,7 +4,7 @@
     Author     : Usuário
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <%@page import="produto.modelo.Produto"%>
 <%@page import="produto.modelo.ProdutoDAO"%>
@@ -71,4 +71,4 @@
 
 </main>
     
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

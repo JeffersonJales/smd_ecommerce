@@ -4,7 +4,7 @@
     Author     : Usuário
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
 <link rel="stylesheet" href="Style/p_usuario.css">
 
@@ -40,4 +40,4 @@
 
 </main>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

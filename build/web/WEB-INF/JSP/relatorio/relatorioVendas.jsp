@@ -4,7 +4,7 @@
     Author     : jeffe
 --%>
 
-<%@include file="../../../header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <%@page import="relatorios.modelo.RelatorioFaturamento" %>
 <% 
@@ -38,4 +38,4 @@
     } 
 %>
 
-<%@include file="../../../footer.jsp" %>
+<%@include file="../footer.jsp" %>

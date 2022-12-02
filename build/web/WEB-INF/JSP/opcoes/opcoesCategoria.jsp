@@ -4,7 +4,7 @@
     Author     : Usuário
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <%@page import="categoria.modelo.Categoria"%>
 <%@page import="categoria.modelo.CategoriaDAO"%>
@@ -55,4 +55,4 @@
         } 
     %>
 </main>
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

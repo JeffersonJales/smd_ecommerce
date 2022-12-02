@@ -4,7 +4,7 @@
     Author     : samue
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
 <link rel="stylesheet" href="Style/cadastro.css">
 <script type="text/javascript" src="Javascript/script.js"></script>
@@ -45,4 +45,4 @@
     </form>
 </main>
 
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

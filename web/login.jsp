@@ -5,7 +5,7 @@
 --%>
 
 
-<%@include file="header.jsp" %>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
 <link rel="stylesheet" href="Style/login.css">
 <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
@@ -49,4 +49,4 @@
     </div>
 </main>
 
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

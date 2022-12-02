@@ -4,7 +4,7 @@
 <%@page import="produto.modelo.Produto"%>
 <%@page import="produto.modelo.ProdutoDAO"%>
 
-<%@include file="header.jsp" %>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
 <%
     ProdutoDAO produtoDao = new ProdutoDAO();
@@ -39,4 +39,4 @@
         }
     %> 
 </div>
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

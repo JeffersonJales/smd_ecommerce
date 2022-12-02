@@ -4,7 +4,7 @@
     Author     : jeffe
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
 <%@page import="produto.modelo.Produto"%>
 
@@ -44,4 +44,4 @@
 </form>
 <% } %>
 
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

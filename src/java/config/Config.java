@@ -56,13 +56,22 @@ public final class Config {
         return usuario.isAdministrador();
     }
     
-    public static void redirectNotAdm(HttpServletRequest req, HttpServletResponse res, String jsp) throws ServletException, IOException{
-        req.setAttribute("mensagem", "Conteúdo exclusivo apenas para administradores");
+    public static boolean isSessionValid(HttpServletRequest request){
+    HttpSession session = request.getSession(false);
+        if(session == null) return false;
+        
+        Usuario usuario = (Usuario) session.getAttribute("cliente");
+        return usuario != null;
+    }
+    
+    
+    public static void redirectUser(HttpServletRequest req, HttpServletResponse res, String jsp, String mensagem) throws ServletException, IOException{
+        req.setAttribute("mensagem", mensagem);
         RequestDispatcher dispatcher = req.getRequestDispatcher(jsp);
         dispatcher.forward(req, res);
     }
     
-    public static void redirectNotAdm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-        redirectNotAdm(req, res, "index.jsp");
+    public static void redirectUser(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        Config.redirectUser(req, res, "index.jsp", "Conteúdo exclusivo apenas para administradores");
     }
 }

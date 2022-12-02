@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package relatorios.controle;
+package acesso;
 
 import config.Config;
 import jakarta.servlet.RequestDispatcher;
@@ -11,40 +11,32 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import produto.modelo.Produto;
-import relatorios.modelo.RelatoriosDAO;
 
 /**
  *
  * @author jeffe
  */
-public class ObterRelatorioEstoqueServlet extends HttpServlet {
+public class AcessarPaginaADM extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         
         if(!Config.isADM(request)){
             Config.redirectUser(request, response);
         }
-        else {
-            RelatoriosDAO relatoriosDao = new RelatoriosDAO();
-            List<Produto> produtos = new ArrayList();
+        else{
+            String destinoJSP = (String) request.getParameter("url");
             
-            try{
-                produtos = relatoriosDao.Estoque();
+            if(destinoJSP == null){ 
+                destinoJSP = "index.jsp";
             }
-            catch(SQLException ex){
-                request.setAttribute("mensagem", ex.getMessage());
+            else{
+                destinoJSP = "WEB-INF/JSP/" + destinoJSP;
             }
             
-            request.setAttribute("relatorio", produtos);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorio/relatorioEstoque.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destinoJSP);
             dispatcher.forward(request, response);
         }
     }
-    
 }

@@ -3,7 +3,7 @@
     Created on : 1 de dez. de 2022, 19:40:08
     Author     : jeffe
 --%>
-<%@include file="../../../header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <%@page import="relatorios.modelo.RelatorioCliente" %>
 <% 
@@ -30,4 +30,4 @@
     } 
 %>
 
-<%@include file="../../../footer.jsp" %>
+<%@include file="../footer.jsp" %>

@@ -4,9 +4,10 @@
     Author     : Usuário
 --%>
 
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
-<link rel="stylesheet" href="Style/p_usuario.css">
+<link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
+<link rel="stylesheet" href="Style/p_admin.css">
 
 <main>
     <div class="barra_dados">
@@ -18,10 +19,10 @@
 
     <div class="container">
 
-    <% 
-        if(cliente != null){        
-    %>        
-    <!-- Para o usuario normal -->
+        <% 
+            if(cliente != null){        
+        %>        
+            <!-- Para o usuario normal -->
             <label for="name"><b>Name</b></label>
             <br>
             <%= cliente.getNome() %>
@@ -45,8 +46,8 @@
 
             <div class="user_op">
 
-                <a href="alterar_dados.jsp" >Alterar Dados</a><br>
-                <a href="visualizacaoCompras.jsp" >Visualizar Compras</a><br>
+                <a href="user?url=perfil/alterar_dados.jsp" >Alterar Dados</a><br>
+                <a href="user?url=visualizaoCompras/visualizacaoCompras.jsp" >Visualizar Compras</a><br>
                 <form method="post" action="usuarioDeletar" >
                     <input type="hidden" name="idUsuario" value="<%= cliente.getId()%> " required>
                     <button type="submit" class="registerbtn">Excluir Dados de usuario</button>
@@ -54,8 +55,9 @@
 
                 <a href="index.jsp" >Voltar</a> 
             </div>
-          <% } %>
-     </div>
- </main>
 
-<%@include file="footer.jsp" %>
+        <% } %>
+    </div>
+</main>
+
+<%@include file="../footer.jsp" %>

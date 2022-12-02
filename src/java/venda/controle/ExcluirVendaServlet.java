@@ -21,7 +21,7 @@ public class ExcluirVendaServlet extends HttpServlet {
             throws ServletException, IOException {
         
         if(!Config.isADM(request)){
-            Config.redirectNotAdm(request, response);
+            Config.redirectUser(request, response);
         }
         else{
             String mensagem = "Venda excluida com sucesso!";

@@ -4,7 +4,7 @@
     Author     : Usuário
 --%>
 
-<%@include file="header.jsp"%>
+<%@include file="../header.jsp"%>
 
 <link rel="stylesheet" href="Style/p_admin_opcoes.css">
 
@@ -17,10 +17,10 @@
     </div>
         
     <div class="container">
-            <a href="opcoesCategoria.jsp" class="button">CATEGORIAS</a><br>
-            <a href="opcoesProdutos.jsp" class="button">PRODUTOS</a><br>
-            <a href="perfil_admin.jsp" class="button">DADOS DA CONTA</a><br>
-            <a href="visualizacao&remocao.jsp" class="button">VISUALIZAÇÃO E EXCLUSÃO DE COMPRAS</a><br>
+            <a href="adm?url=opcoes/opcoesCategoria.jsp" class="button">CATEGORIAS</a><br>
+            <a href="adm?url=opcoes/opcoesProdutos.jsp" class="button">PRODUTOS</a><br>
+            <a href="adm?url=perfil/perfil_admin.jsp" class="button">DADOS DA CONTA</a><br>
+            <a href="adm?url=visualizacaoCompras/visualizacao&remocao.jsp" class="button">VISUALIZAÇÃO E EXCLUSÃO DE COMPRAS</a><br>
             <a href="ObterRelatorioClienteServlet" class="button">RELATÓRIOS CLIENTES</a><br>
             <a href="ObterRelatorioEstoqueServlet" class="button">RELATÓRIOS ESTOQUE</a><br>
             <a href="ObterRelatorioFaturamentoServlet" class="button">RELATÓRIOS FATURAMENTO</a><br>
@@ -29,4 +29,4 @@
 
 </main>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
