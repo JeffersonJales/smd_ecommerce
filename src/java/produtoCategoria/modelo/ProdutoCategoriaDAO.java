@@ -4,6 +4,7 @@
  */
 package produtoCategoria.modelo;
 
+import config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,9 +24,9 @@ public class ProdutoCategoriaDAO {
         List<ProdutoCategoria> produtoCategorias = new ArrayList();
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * from produto_categoria where id_produto = ?")) {
                 preparedStatement.setInt(1, idProduto);
 
@@ -50,9 +51,9 @@ public class ProdutoCategoriaDAO {
         List<ProdutoCategoria> produtoCategorias = new ArrayList();
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * from produto_categoria where id_categoria = ?")) {
                 preparedStatement.setInt(1, idCategoria);
 
@@ -75,9 +76,9 @@ public class ProdutoCategoriaDAO {
     
     public boolean inserir(int idProduto, int idCategoria) throws SQLException {
          try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO produto_categoria (id_produto, id_categoria) VALUES (?, ?)")) {
                 preparedStatement.setInt(1, idProduto);
                 preparedStatement.setInt(2, idCategoria);
@@ -90,9 +91,9 @@ public class ProdutoCategoriaDAO {
     
     public boolean atualizar(int idProduto, int idCategoriaAntigo, int idCategoriaNovo) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE produto_categoria SET id_categoria = ? WHERE id_produto = ? AND id_categoria = ?")) {
                 preparedStatement.setInt(1, idCategoriaNovo);
                 preparedStatement.setInt(2, idProduto);
@@ -107,9 +108,9 @@ public class ProdutoCategoriaDAO {
     
     public boolean remover(int idProduto, int idCategoria) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM produto_categoria where id_produto = ? AND id_categoria = ?")) {
                 preparedStatement.setInt(1, idProduto);
                 preparedStatement.setInt(2, idCategoria);

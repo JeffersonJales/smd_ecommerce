@@ -5,6 +5,7 @@
 package venda.modelo;
 import venda.modelo.Venda;
 import categoria.modelo.Categoria;
+import config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,9 +25,9 @@ public class VendaDAO {
         Venda venda = null;
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * from venda where id = ?")) {
                 preparedStatement.setInt(1, id);
                 
@@ -50,9 +51,9 @@ public class VendaDAO {
         List<Venda> vendas = new ArrayList();
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * from venda where id_usuario = ?")) {
                 preparedStatement.setInt(1, idUsuario);
                 
@@ -76,9 +77,9 @@ public class VendaDAO {
     
     public Venda inserir(int idUsuario) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO venda (id_usuario) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, idUsuario);
                 preparedStatement.execute();
@@ -99,9 +100,9 @@ public class VendaDAO {
     
     public boolean remover(int idVenda) throws SQLException{
     try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM venda where id = ?")){
                 preparedStatement.setInt(1, idVenda);
                 return preparedStatement.execute();
