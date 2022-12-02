@@ -1,11 +1,10 @@
 <%-- 
     Document   : login]
     Created on : 14/10/2022, 17:36:05
-    Author     : UsuÃ¡rio
+    Author     : Usuário
 --%>
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 
 <link rel="stylesheet" href="Style/login.css">
@@ -43,7 +42,7 @@
             </div>
 
             <div class="container cadastrase">
-                <p>NÃ£o possui uma conta? <a href="cadastro.jsp">Cadastra-se</a>.</p>
+                <p>Não possui uma conta? <a href="cadastro.jsp">Cadastra-se</a>.</p>
             </div>
 
         </form>

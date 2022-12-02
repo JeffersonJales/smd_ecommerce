@@ -1,11 +1,9 @@
 <%-- 
     Document   : login]
     Created on : 14/10/2022, 17:36:05
-    Author     : UsuÃ¡rio
+    Author     : Usuário
 --%>
 
-<%@page import="usuario.modelo.Usuario"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 
 <link rel="shortcut icon" href="img/Dooffy-Characters-K1.ico" type="image/x-icon">
@@ -37,7 +35,7 @@
             <br>
             <%= cliente.getEmail() %>
             <hr><br>
-            <label for="enderco"><b>EndereÃ§o</b></label>
+            <label for="enderco"><b>Endereço</b></label>
             <br>
             <%= cliente.getEndereco() %>
             <hr><br>
