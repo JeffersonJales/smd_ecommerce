@@ -15,8 +15,6 @@ import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import relatorios.modelo.RelatoriosDAO;
 import relatorios.modelo.RelatorioCliente;
 
@@ -34,20 +32,32 @@ public class ObterRelatorioClienteServlet extends HttpServlet {
             Config.redirectNotAdm(request, response);
         }
         else {
+            
+            /// Iniciar dados
             RelatoriosDAO relatoriosDao = new RelatoriosDAO();
             List<RelatorioCliente> relatorioCliente = new ArrayList();
-            Date date = new Date(System.currentTimeMillis()); 
-
+            Date data_inicio = new Date(System.currentTimeMillis()); 
+            Date data_fim = new Date(System.currentTimeMillis()); 
+              
+            /// Substituindo as datas por datas enviadas via request
+            Date data_inicio_request = (Date) request.getAttribute("data_inicio");
+            Date data_fim_request = (Date) request.getAttribute("data_fim");
+            if(data_inicio_request != null) data_inicio = data_inicio_request;
+            if(data_fim_request != null) data_fim = data_inicio_request;
+            
+            /// Obter relatório
             try{
-              relatorioCliente = relatoriosDao.Cliente(date, date);
+              relatorioCliente = relatoriosDao.Cliente(data_inicio, data_fim);
             }
             catch(SQLException ex){
                 request.setAttribute("mensagem", ex.getMessage());
             }
             
-            request.setAttribute("data", date);
+            /// Mandar relatório e datas para o front
             request.setAttribute("relatorio", relatorioCliente);
-
+            request.setAttribute("data_inicio", data_inicio);
+            request.setAttribute("data_fim", data_fim);
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorioCliente.jsp");
             dispatcher.forward(request, response);
         }

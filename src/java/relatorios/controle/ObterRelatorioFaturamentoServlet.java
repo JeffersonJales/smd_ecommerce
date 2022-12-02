@@ -45,17 +45,25 @@ public class ObterRelatorioFaturamentoServlet extends HttpServlet {
         else {
             RelatoriosDAO relatoriosDao = new RelatoriosDAO();
             List<RelatorioFaturamento> relatorioFaturamento = new ArrayList();
-            Date date = new Date(System.currentTimeMillis()); 
+            Date data_inicio = new Date(System.currentTimeMillis()); 
+            Date data_fim = new Date(System.currentTimeMillis()); 
 
+             /// Substituindo as datas por datas enviadas via request
+            Date data_inicio_request = (Date) request.getAttribute("data_inicio");
+            Date data_fim_request = (Date) request.getAttribute("data_fim");
+            if(data_inicio_request != null) data_inicio = data_inicio_request;
+            if(data_fim_request != null) data_fim = data_inicio_request;
+           
             try{
-              relatorioFaturamento = relatoriosDao.Faturamento(date, date);
+              relatorioFaturamento = relatoriosDao.Faturamento(data_inicio, data_fim);
             }
             catch(SQLException ex){
                 request.setAttribute("mensagem", ex.getMessage());
             }
             
-            request.setAttribute("data", date);
             request.setAttribute("relatorio", relatorioFaturamento);
+            request.setAttribute("data_inicio", data_inicio);
+            request.setAttribute("data_fim", data_fim);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorioFaturamento.jsp");
             dispatcher.forward(request, response);

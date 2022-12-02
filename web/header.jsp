@@ -11,6 +11,7 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Locale"%>
 
+<%@page import="java.util.Date" %>
 <%@page import="usuario.modelo.Usuario"%>
 <%@page import="carrinhoCompra.controle.ObterCarrinhoCompra"%>
 <%@page import="carrinhoCompra.modelo.CarrinhoCompraItem"%>

@@ -7,6 +7,7 @@
 <%@page import="produto.modelo.Produto" %>
 <%
     List<Produto> produtos = (List<Produto>) request.getAttribute("relatorio");
+    
 %>
 
 <%@include file="../../header.jsp" %>
