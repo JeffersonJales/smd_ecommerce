@@ -42,7 +42,7 @@ public class ObterRelatorioEstoqueServlet extends HttpServlet {
             }
             
             request.setAttribute("relatorio", produtos);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorioEstoque.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorio/relatorioEstoque.jsp");
             dispatcher.forward(request, response);
         }
     }

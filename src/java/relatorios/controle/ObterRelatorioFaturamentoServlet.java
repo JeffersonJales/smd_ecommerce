@@ -71,7 +71,7 @@ public class ObterRelatorioFaturamentoServlet extends HttpServlet {
             request.setAttribute("data_inicio", dataInicio);
             request.setAttribute("data_fim", dataFim);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorioVendas.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorio/relatorioVendas.jsp");
             dispatcher.forward(request, response);
         }
     }

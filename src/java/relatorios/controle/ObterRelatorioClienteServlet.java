@@ -67,7 +67,7 @@ public class ObterRelatorioClienteServlet extends HttpServlet {
             request.setAttribute("data_fim", dataFim);
             
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorioClientes.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/relatorio/relatorioClientes.jsp");
             dispatcher.forward(request, response);
         }
     }

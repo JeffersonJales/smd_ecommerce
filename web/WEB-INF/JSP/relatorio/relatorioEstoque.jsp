@@ -10,7 +10,7 @@
     
 %>
 
-<%@include file="../../header.jsp" %>
+<%@include file="../../../header.jsp" %>
 
 <% if(produtos != null && !produtos.isEmpty()) { %>
     <h1> Produtos fora de estoque </h1>
@@ -23,4 +23,5 @@
     <h1> Todos os produtos estão estão com estoque! </h1>
 <% } %>
 
-<%@include file="../../footer.jsp" %>
+<%@include file="../../../footer.jsp" %>
+
