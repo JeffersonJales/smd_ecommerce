@@ -5,8 +5,6 @@
 package relatorios.modelo;
 
 import java.sql.Connection;
-import java.util.Date;
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,7 +48,7 @@ public class RelatoriosDAO {
         return produtos;
     }
     
-    public List<RelatorioFaturamento> Faturamento(Date inicio, Date fim) throws SQLException{
+    public List<RelatorioFaturamento> Faturamento(String inicio, String fim) throws SQLException{
         List<RelatorioFaturamento> rfs = new ArrayList();
         
         String sql = 
@@ -61,23 +59,19 @@ public class RelatoriosDAO {
             "where v.data_hora >= ? AND  v.data_hora <= ?) " +
             "select dia, sum(total_preco) as valor from tab1 group by dia order by dia;";
         
-        java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
-        java.sql.Date dataFim = new java.sql.Date(fim.getTime());
-
-                
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setDate(1, dataInicio);
-                preparedStatement.setDate(2, dataFim);
+                preparedStatement.setString(1, inicio);
+                preparedStatement.setString(2, fim);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
                     RelatorioFaturamento rf = new RelatorioFaturamento();
-                    rf.setData(resultSet.getDate("dia"));
+                    rf.setData(resultSet.getString("dia"));
                     rf.setValor(resultSet.getDouble("valor"));
                     rfs.add(rf);
                 }
@@ -89,7 +83,7 @@ public class RelatoriosDAO {
         return rfs;
     }
 
-    public List<RelatorioCliente> Cliente(Date inicio, Date fim) throws SQLException{
+    public List<RelatorioCliente> Cliente(String inicio, String fim) throws SQLException{
         List<RelatorioCliente> rcs = new ArrayList();
         
         String sql = 
@@ -101,16 +95,13 @@ public class RelatoriosDAO {
             "where v.data_hora >= ? AND  v.data_hora <= ?)" +
             "select id, nome, sum(quantidade) as total_compra from tab1 group by id order by total_compra desc;";
         
-        java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
-        java.sql.Date dataFim = new java.sql.Date(fim.getTime());
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setDate(1, dataInicio);
-                preparedStatement.setDate(2, dataFim);
+                preparedStatement.setString(1, inicio);
+                preparedStatement.setString(2, fim);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 

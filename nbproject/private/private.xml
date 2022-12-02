@@ -3,26 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/vendaProdutoItem/modelo/VendaProdutoItem.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/carrinhoCompra/modelo/CarrinhoCompra.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/produto/modelo/ProdutoDAO.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/carrinhoCompra/modelo/CarrinhoCompraItem.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/relatorios/modelo/RelatorioFaturamento.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/carrinhoCompra/controle/ChecarCarrinhoCompraServlet.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/venda/modelo/Venda.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/relatorios/modelo/RelatoriosDAO.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/produto/modelo/Produto.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/venda/controle/CadastrarVenda.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/relatorios/modelo/RelatorioCliente.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/produtoVenda/modelo/ProdutoVendaDAO.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/carrinhoCompra/controle/AdicionarCarrinhoCompraItemServlet.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/web/visualizacao&amp;remocao.jsp</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/web/header.jsp</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/venda/modelo/VendaDAO.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/web/visualizacaoCompras.jsp</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/carrinhoCompra/controle/RemoverCarrinhoCompraItemServlet.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/produtoVenda/modelo/ProdutoVenda.java</file>
-            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/vendaProdutoItem/modelo/VendaProdutoItemDAO.java</file>
+            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/relatorios/controle/ObterRelatorioFaturamentoServlet.java</file>
+            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/src/java/relatorios/controle/ObterRelatorioClienteServlet.java</file>
+            <file>file:/C:/Users/jeffe/Desktop/UFC/2022_2/smd_ecommerce/web/WEB-INF/JSP/relatorioClientes.jsp</file>
         </group>
     </open-files>
 </project-private>
