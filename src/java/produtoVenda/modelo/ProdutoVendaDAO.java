@@ -4,6 +4,7 @@
  */
 package produtoVenda.modelo;
 
+import config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,9 +20,9 @@ public class ProdutoVendaDAO {
         ProdutoVenda produtoVenda = null;
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * from produto_venda where id_produto = ? AND id_venda = ?")) {
                 preparedStatement.setInt(1, idProduto);
                 preparedStatement.setInt(2, idVenda);
@@ -44,9 +45,9 @@ public class ProdutoVendaDAO {
     
     public boolean inserir(int idProduto, int idVenda, int quantidade) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO produto_venda (id_produto, id_venda, quantidade) VALUES (?, ?, ?)")) {
                 preparedStatement.setInt(1, idProduto);
                 preparedStatement.setInt(2, idVenda);
@@ -61,9 +62,9 @@ public class ProdutoVendaDAO {
     
     public boolean atualizar(int idProduto, int idVenda, int quantidade) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE produto_venda SET quantidade = ? WHERE id_produto = ? AND id_venda = ?")) {
                 preparedStatement.setInt(1, quantidade);
                 preparedStatement.setInt(2, idProduto);

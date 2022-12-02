@@ -4,8 +4,14 @@
  */
 package config;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Properties;
+import usuario.modelo.Usuario;
 
 /**
  *
@@ -38,5 +44,34 @@ public final class Config {
         } catch (IOException ex) {
             return null;
         }
+    }
+    
+    public static boolean isADM(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session == null) return false;
+        
+        Usuario usuario = (Usuario) session.getAttribute("cliente");
+        if(usuario == null) return false;
+        
+        return usuario.isAdministrador();
+    }
+    
+    public static boolean isSessionValid(HttpServletRequest request){
+    HttpSession session = request.getSession(false);
+        if(session == null) return false;
+        
+        Usuario usuario = (Usuario) session.getAttribute("cliente");
+        return usuario != null;
+    }
+    
+    
+    public static void redirectUser(HttpServletRequest req, HttpServletResponse res, String jsp, String mensagem) throws ServletException, IOException{
+        req.setAttribute("mensagem", mensagem);
+        RequestDispatcher dispatcher = req.getRequestDispatcher(jsp);
+        dispatcher.forward(req, res);
+    }
+    
+    public static void redirectUser(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        Config.redirectUser(req, res, "index.jsp", "Conteúdo exclusivo apenas para administradores");
     }
 }

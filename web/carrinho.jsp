@@ -4,10 +4,9 @@
     Author     : jeffe
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="produto.modelo.Produto"%>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
-<%@include file="header.jsp" %>
+<%@page import="produto.modelo.Produto"%>
 
 <%
     double total = 0;
@@ -28,7 +27,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= cci.getProduto().getDescricao() %></h5>
                     <p class="card-text">
-                        PreÃ§o <strong>R$ <%= nf.format(cci.getProduto().getPreco()) %></strong><br/>
+                        Preço <strong>R$ <%= nf.format(cci.getProduto().getPreco()) %></strong><br/>
                         <a href="RemoverCarrinhoCompraItemServlet?produtoId=<%= cci.getProduto().getId() %>" class="btn btn-success mt-2">Remover</a>
                     </p>
                 </div>
@@ -39,10 +38,10 @@
 <%      } %> 
 </div> 
 
-<h5> PreÃ§o total: <%= nf.format(total)%>  </h5>
+<h5> Preço total: <%= nf.format(total)%>  </h5>
 <form action="cadastrarVenda" method="POST">
     <button type="submit" class="registerbtn">Finalizar compra</button>
 </form>
 <% } %>
 
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

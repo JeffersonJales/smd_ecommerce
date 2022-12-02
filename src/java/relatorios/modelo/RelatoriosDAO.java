@@ -4,8 +4,8 @@
  */
 package relatorios.modelo;
 
+import config.Config;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,9 +25,9 @@ public class RelatoriosDAO {
         String sql = "Select * from produto where quantidade = 0 order by descricao;";
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 
@@ -49,24 +49,30 @@ public class RelatoriosDAO {
         return produtos;
     }
     
-    public List<RelatorioFaturamento> Faturamento(Date inicio, Date fim) throws SQLException{
+    public List<RelatorioFaturamento> Faturamento(String inicio, String fim) throws SQLException{
         List<RelatorioFaturamento> rfs = new ArrayList();
         
-        String sql = "select * from";
+        String sql = 
+            "WITH tab1 as (select CAST(v.data_hora as DATE) as dia, p.descricao, " +
+            "p.preco, pv.quantidade, (pv.quantidade * p.preco) as total_preco from venda v " +
+            "inner join produto_venda pv on pv.id_venda = v.id " +
+            "inner join produto p on p.id = pv.id_produto " + 
+            "where v.data_hora >= ? AND  v.data_hora <= ?) " +
+            "select dia, sum(total_preco) as valor from tab1 group by dia order by dia;";
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setDate(1, inicio);
-                preparedStatement.setDate(2, fim);
+                preparedStatement.setString(1, inicio);
+                preparedStatement.setString(2, fim);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
                     RelatorioFaturamento rf = new RelatorioFaturamento();
-                    rf.setData(resultSet.getDate("data"));
+                    rf.setData(resultSet.getString("dia"));
                     rf.setValor(resultSet.getDouble("valor"));
                     rfs.add(rf);
                 }
@@ -76,5 +82,42 @@ public class RelatoriosDAO {
         }
         
         return rfs;
+    }
+
+    public List<RelatorioCliente> Cliente(String inicio, String fim) throws SQLException{
+        List<RelatorioCliente> rcs = new ArrayList();
+        
+        String sql = 
+            "WITH tab1 as (select CAST(v.data_hora as DATE) as dia, p.descricao, p.preco, pv.quantidade, " +
+            "(pv.quantidade * p.preco) as total_preco, u.id, u.nome from venda v " +
+            "inner join usuario u on u.id = v.id_usuario " +
+            "inner join produto_venda pv on pv.id_venda = v.id " +
+            "inner join produto p on p.id = pv.id_produto " +
+            "where v.data_hora >= ? AND  v.data_hora <= ?)" +
+            "select id, nome, sum(quantidade) as total_compra from tab1 group by id order by total_compra desc;";
+        
+        try {
+            Class.forName(Config.JDBC_DRIVER);
+            try (
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, inicio);
+                preparedStatement.setString(2, fim);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    RelatorioCliente rc = new RelatorioCliente();
+                    rc.getUsuario().setId(resultSet.getInt("id"));
+                    rc.getUsuario().setNome(resultSet.getString("nome"));
+                    rc.setQuantidadeCompras(resultSet.getInt("total_compra"));
+                    rcs.add(rc);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return rcs;
     }
 }

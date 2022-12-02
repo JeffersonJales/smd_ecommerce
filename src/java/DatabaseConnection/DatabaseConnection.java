@@ -4,6 +4,7 @@
  */
 package DatabaseConnection;
 
+import config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,9 +21,9 @@ public class DatabaseConnection {
 
     public ResultSet QuerySimple(String query) throws SQLException{
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 Statement statement = connection.createStatement(); 
                 ResultSet resultSet = statement.executeQuery(query)){
                     return resultSet;
@@ -38,7 +39,7 @@ public class DatabaseConnection {
     public ResultSet QueryPrepare(String query, List<Object> preparedItens) throws SQLException{
         try{
             Class.forName("org.mysql.Driver");
-             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jj3294"); 
+             try (Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, "jj3294"); 
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
                  

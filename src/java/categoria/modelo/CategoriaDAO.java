@@ -4,6 +4,7 @@
  */
 package categoria.modelo;
  
+import config.Config;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.Connection;
@@ -23,9 +24,9 @@ public class CategoriaDAO {
         Categoria categoria = null;
         
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 
                 PreparedStatement preparedStatement = connection.prepareStatement("Select * categoria where id = ?")) {
                 preparedStatement.setInt(1, id);
@@ -50,9 +51,9 @@ public class CategoriaDAO {
         List<Categoria> resultado = new ArrayList();
         
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 Statement statement = connection.createStatement(); 
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM CATEGORIA")){
                 while(resultSet.next()){
@@ -77,9 +78,9 @@ public class CategoriaDAO {
                 + "WHERE produto_categoria.id_produto = ?";
         
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, idProduto);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -101,9 +102,9 @@ public class CategoriaDAO {
     
     public boolean inserir(String descricao) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO categoria (descricao) VALUES (?)")) {
                 preparedStatement.setString(1, descricao);
                 return preparedStatement.execute();
@@ -115,9 +116,9 @@ public class CategoriaDAO {
     
     public boolean atualizar(int id, String descricao) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE categoria SET descricao = ? WHERE id = ?")) {
                 preparedStatement.setString(1, descricao);
                 preparedStatement.setInt(2, id);
@@ -131,9 +132,9 @@ public class CategoriaDAO {
     
     public boolean remover(int id) throws SQLException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM categoria where id = ?")) {
                 preparedStatement.setInt(1, id);
                 return preparedStatement.execute();

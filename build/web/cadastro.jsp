@@ -4,11 +4,8 @@
     Author     : samue
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="header.jsp" %>
+<%@include file="WEB-INF/JSP/header.jsp" %>
 
-
-<!DOCTYPE html>
 <link rel="stylesheet" href="Style/cadastro.css">
 <script type="text/javascript" src="Javascript/script.js"></script>
 
@@ -28,7 +25,7 @@
           <label for="email"><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-          <label for="enderco"><b>EndereÃ§o</b></label>
+          <label for="enderco"><b>Endereço</b></label>
           <input type="text" placeholder="Endereco" name="endereco" id="endereco" required>
 
           <label for="psw"><b>Password</b></label>
@@ -48,4 +45,4 @@
     </form>
 </main>
 
-<%@include file="footer.jsp" %>
+<%@include file="WEB-INF/JSP/footer.jsp" %>

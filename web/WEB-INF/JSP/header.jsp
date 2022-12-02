@@ -11,6 +11,7 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Locale"%>
 
+<%@page import="java.util.Date" %>
 <%@page import="usuario.modelo.Usuario"%>
 <%@page import="carrinhoCompra.controle.ObterCarrinhoCompra"%>
 <%@page import="carrinhoCompra.modelo.CarrinhoCompraItem"%>
@@ -28,7 +29,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,10 +63,9 @@
                                 <form action="logout", method="POST">
 
                                     <% if(cliente.isAdministrador()) { %>  <!-- inverter depois de finalizar o conteudo do if com o else -->
-                                        <a href="perfil_admin_opcoes.jsp" >PERFIL</a>
-                                        <a href="perfil_usuario.jsp" >PERFIL</a>
+                                        <a href="adm?url=perfil/perfil_admin_opcoes.jsp" >PERFIL</a>
                                     <% } else { %>
-                                        <a href="perfil_admin_opcoes.jsp" >PERFIL</a>
+                                        <a href="user?url=perfil/perfil_usuario.jsp" >PERFIL</a>
                                         
 
                                     <% } %>

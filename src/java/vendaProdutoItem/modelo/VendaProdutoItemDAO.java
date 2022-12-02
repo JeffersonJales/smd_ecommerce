@@ -4,6 +4,7 @@
  */
 package vendaProdutoItem.modelo;
 
+import config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,10 +27,10 @@ public class VendaProdutoItemDAO {
                         "where v.id_usuario = ?;";
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Config.JDBC_DRIVER);
             
             try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/smd_ecommerce_", "jeff", "jeff123"); 
+                Connection connection = DriverManager.getConnection(Config.JDBC_URL, Config.JDBC_USER, Config.JDBC_PASSWORD); 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, idUsuario);
                 

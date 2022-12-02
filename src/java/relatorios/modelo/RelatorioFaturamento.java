@@ -4,21 +4,19 @@
  */
 package relatorios.modelo;
 
-import java.sql.Date;
-
 /**
  *
  * @author jeffe
  */
 public class RelatorioFaturamento {
-    private Date data;
+    private String data;
     private double valor;
     
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
