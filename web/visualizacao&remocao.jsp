@@ -66,7 +66,7 @@
             %>  
           <br>
           
-        <form action="#" method="post" > 
+        <form action="ExcluirVendaServlet" method="post" > 
             <input type="hidden" name="id" value="<%= us.getId() %>" required>
             <button type="submit" class="registerbtn">Deletar</button>
         </form>
