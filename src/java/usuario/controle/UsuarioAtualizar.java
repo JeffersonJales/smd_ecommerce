@@ -33,7 +33,7 @@ public class UsuarioAtualizar extends HttpServlet {
         String nome = request.getParameter("nome");
         String endereco = request.getParameter("endereco");
         String email = request.getParameter("email");
-        String destinoJSP = "perfil_usuario.jsp";
+        String destinoJSP = "WEB-INF/JSP/perfil/perfil_usuario.jsp";
         
         try{
             int idUsuario = Integer.parseInt(id);
@@ -43,14 +43,13 @@ public class UsuarioAtualizar extends HttpServlet {
         }
          catch(SQLException ex){
             mensagem = "Não foi possível atualizar cadastro.";
-             System.out.println("SQL ERROR!!!");
         }
         catch(NumberFormatException num){
             mensagem = "Usuário inválido.";
         }
         
         if(usuario.isAdministrador()){
-            destinoJSP = "perfil_admin_opcoes.jsp";
+            destinoJSP = "WEB-INF/JSP/perfil/perfil_admin_opcoes.jsp";
         }
         
         HttpSession sessao = request.getSession(false);

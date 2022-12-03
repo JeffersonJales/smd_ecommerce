@@ -53,7 +53,7 @@ public class ProdutoAtualizar extends HttpServlet {
         catch(SQLException ex){
             request.setAttribute("mensagem", "Produto não atualizado.");
         } 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesProdutos.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/JSP/opcoes/opcoesProdutos.jsp");
         dispatcher.forward(request, response);
     }
 }

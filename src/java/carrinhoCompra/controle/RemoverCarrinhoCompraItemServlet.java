@@ -35,7 +35,7 @@ public class RemoverCarrinhoCompraItemServlet extends HttpServlet {
         cookie.setValue(novaString);
         response.addCookie(cookie);
         request.setAttribute("mensagem", "Produto removido do carrinho de compra");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/carrinho.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("carrinho.jsp");
         dispatcher.forward(request, response);
     }
 }

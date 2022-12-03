@@ -53,10 +53,6 @@
         <servlet-class>produto.controle.ProdutoDeletar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Inicio</servlet-name>
-        <servlet-class>inicio.Inicio</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CarrinhoCompraServlet</servlet-name>
         <servlet-class>carrinhoCompra.controle.CarrinhoCompraServlet</servlet-class>
     </servlet>
@@ -147,10 +143,6 @@
     <servlet-mapping>
         <servlet-name>ProdutoAtualizar</servlet-name>
         <url-pattern>/produtoAtualizar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Inicio</servlet-name>
-        <url-pattern>/Inicio</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CarrinhoCompraServlet</servlet-name>

@@ -41,7 +41,8 @@ public class UsuarioDeletar extends HttpServlet {
         }
         
         HttpSession sessao = request.getSession();
-        sessao.invalidate();
+        if(sessao != null)
+            sessao.invalidate();
         
         request.setAttribute("mensagem", mensagem);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

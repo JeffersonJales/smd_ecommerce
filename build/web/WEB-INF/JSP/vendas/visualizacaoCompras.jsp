@@ -45,7 +45,7 @@
 
                           %>
 
-                              <label for="descricao"><b>Descriï¿½ï¿½o</b></label><br>
+                              <label for="descricao"><b>Descrição</b></label><br>
                                         <%= pd.getDescricao() %> <br>
                               <label for="quantidade"><b>Quantidade</b></label><br>                         
                                         <%= pd.getQuantidade() %> <br>
@@ -53,11 +53,13 @@
                                 }
                             %>  
                           <br>
-
+                        <% if(cliente.isAdministrador()){  %>
                          <form action="ExcluirVendaServlet" method="post" > 
                             <input type="hidden" name="id" value="<%= cp.getVenda().getId() %>" required>
                             <button type="submit" class="registerbtn">Deletar</button>
                          </form>
+                            
+                        <% } %> 
                     </div>       
     <%          }
         }
