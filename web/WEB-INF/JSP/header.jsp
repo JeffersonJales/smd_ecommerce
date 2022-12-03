@@ -64,9 +64,8 @@
 
                                     <% if(cliente.isAdministrador()) { %>  <!-- inverter depois de finalizar o conteudo do if com o else -->
                                         <a href="adm?url=perfil/perfil_admin_opcoes.jsp" >PERFIL</a>
-                                        <a href="user?url=perfil/perfil_usuario.jsp" >PERFIL</a>
                                     <% } else { %>
-                                        <a href="user?url=perfil/perfil_admin_opcoes.jsp" >PERFIL</a>
+                                        <a href="user?url=perfil/perfil_usuario.jsp" >PERFIL</a>
                                         
 
                                     <% } %>

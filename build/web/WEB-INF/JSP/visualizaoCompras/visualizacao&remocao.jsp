@@ -67,7 +67,11 @@
           <br>
           
         <form action="ExcluirVendaServlet" method="post" > 
+<<<<<<<< HEAD:build/web/WEB-INF/JSP/visualizaoCompras/visualizacao&remocao.jsp
             <input type="hidden" name="id" value="<%= us.getId() %>" required>
+========
+            <input type="hidden" name="id" value="<%= cp.getVenda().getId() %>" required>
+>>>>>>>> 7db7433ed910fb26d7b5b9696a0ce67225cf7e68:build/web/WEB-INF/JSP/vendas/visualizacao&remocao.jsp
             <button type="submit" class="registerbtn">Deletar</button>
         </form>
     </div>       

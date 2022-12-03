@@ -1,7 +1,7 @@
 <%-- 
     Document   : login]
     Created on : 14/10/2022, 17:36:05
-    Author     : Usuário
+    Author     : Usuï¿½rio
 --%>
 
 <%@page import="categoria.modelo.Categoria"%>
@@ -45,7 +45,7 @@
 
                           %>
 
-                              <label for="descricao"><b>Descrição</b></label><br>
+                              <label for="descricao"><b>Descriï¿½ï¿½o</b></label><br>
                                         <%= pd.getDescricao() %> <br>
                               <label for="quantidade"><b>Quantidade</b></label><br>                         
                                         <%= pd.getQuantidade() %> <br>
@@ -54,10 +54,10 @@
                             %>  
                           <br>
 
-                        <form action="#" method="post" > 
-                            <input type="hidden" name="id" value="<%= cliente.getId() %>" required>
+                         <form action="ExcluirVendaServlet" method="post" > 
+                            <input type="hidden" name="id" value="<%= cp.getVenda().getId() %>" required>
                             <button type="submit" class="registerbtn">Deletar</button>
-                        </form>
+                         </form>
                     </div>       
     <%          }
         }
